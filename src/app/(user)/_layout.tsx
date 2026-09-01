@@ -1,20 +1,38 @@
-import { NativeTabs } from 'expo-router/unstable-native-tabs';
-
+import { NativeTabs } from "expo-router/unstable-native-tabs";
 
 export default function TabLayout() {
   return (
     <NativeTabs>
       <NativeTabs.Trigger name="index">
-        <NativeTabs.Trigger.Label>Home</NativeTabs.Trigger.Label>
-        <NativeTabs.Trigger.Icon sf="house.fill" md="home" />
+        <NativeTabs.Trigger.Label hidden />
+        <NativeTabs.Trigger.Icon
+          src={require("../../../assets/images/icons/house.png")}
+        />
       </NativeTabs.Trigger>
-      <NativeTabs.Trigger name="shop">
-        <NativeTabs.Trigger.Icon sf="shoeprints.fill" md="shopping_bag" />
-        <NativeTabs.Trigger.Label>Shop</NativeTabs.Trigger.Label>
+
+      <NativeTabs.Trigger name="shops">
+        <NativeTabs.Trigger.Label hidden />
+
+        <NativeTabs.Trigger.Icon
+          src={require("../../../assets/images/icons/store.png")}
+        />
       </NativeTabs.Trigger>
-       <NativeTabs.Trigger name="settings">
-        <NativeTabs.Trigger.Icon sf="gear" md="settings" />
-        <NativeTabs.Trigger.Label>Settings</NativeTabs.Trigger.Label>
+
+      <NativeTabs.Trigger name="wishlist">
+        <NativeTabs.Trigger.Label hidden />
+        <NativeTabs.Trigger.Icon sf="heart" md="favorite" />
+      </NativeTabs.Trigger>
+
+      <NativeTabs.Trigger name="bookings">
+        <NativeTabs.Trigger.Label hidden />
+        <NativeTabs.Trigger.Icon
+          src={require("../../../assets/images/icons/calendar.png")}
+        />
+      </NativeTabs.Trigger>
+
+      <NativeTabs.Trigger name="profile">
+        <NativeTabs.Trigger.Label hidden />
+        <NativeTabs.Trigger.Icon sf="person" md="person" />
       </NativeTabs.Trigger>
     </NativeTabs>
   );
