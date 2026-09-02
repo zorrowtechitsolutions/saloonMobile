@@ -9,7 +9,7 @@ export default function Index() {
       <ScrollView
         className="p-2"
         contentContainerStyle={{
-          paddingBottom: 50,
+          paddingBottom: 30,
         }}
         showsVerticalScrollIndicator={false}
       >

@@ -2,8 +2,6 @@ import { ArrowRight } from "lucide-react-native";
 import { Pressable, ScrollView, Text, View } from "react-native";
 import { CardComponent } from "../components/common/Card";
 
-const categories = ["Haircut", "Nail Polish", "Hair Color", "Beard", "Facial"];
-
 const shops = [
   {
     id: "1",
@@ -27,41 +25,37 @@ const shops = [
     experience: "7 Years",
     distance: "1.5 KM",
   },
+
+  {
+    id: "3",
+    name: "Sophia",
+    shop: "Style Studio",
+    image: require("@/assets/images/icon.png"),
+    rating: "4.8",
+    service: "Haircut",
+    price: "300 Rs",
+    experience: "7 Years",
+    distance: "1.5 KM",
+  },
+  {
+    id: "4",
+    name: "Sophia",
+    shop: "Style Studio",
+    image: require("@/assets/images/icon.png"),
+    rating: "4.8",
+    service: "Haircut",
+    price: "300 Rs",
+    experience: "7 Years",
+    distance: "1.5 KM",
+  },
 ];
 
-export default function Stylish() {
+export default function Stylish({ title }: { title: string }) {
   return (
     <View className="mt-5">
-      {/* Categories */}
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={{
-          paddingHorizontal: 20,
-          gap: 10,
-        }}
-      >
-        {categories.map((category, index) => (
-          <Pressable
-            key={category}
-            className={`h-12 items-center justify-center rounded-full px-6 ${
-              index === 0 ? "bg-black" : "border border-gray-200 bg-white"
-            }`}
-          >
-            <Text
-              className={`text-[15px] font-medium ${
-                index === 0 ? "text-white" : "text-gray-600"
-              }`}
-            >
-              {category}
-            </Text>
-          </Pressable>
-        ))}
-      </ScrollView>
-
       {/* Header */}
       <View className="mt-6 flex-row items-center justify-between px-5">
-        <Text className="text-[25px] font-bold text-black">Top Stylish</Text>
+        <Text className="text-[25px] font-bold text-black">{title} </Text>
 
         <Pressable className="flex-row items-center">
           <Text className="text-[16px] font-semibold text-black">See All</Text>
@@ -71,11 +65,17 @@ export default function Stylish() {
       </View>
 
       {/* Shops */}
-      <View className="mt-4 gap-4 ">
+
+      <ScrollView
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerClassName="gap-4 px-4"
+        className="mt-4 w-full"
+      >
         {shops.map((shop) => (
           <CardComponent key={shop.id} shop={shop} />
         ))}
-      </View>
+      </ScrollView>
     </View>
   );
 }

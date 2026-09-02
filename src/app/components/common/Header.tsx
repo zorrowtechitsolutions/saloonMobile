@@ -3,7 +3,7 @@ import { Pressable, Text, View } from "react-native";
 
 export default function HeaderComponent() {
   return (
-    <View className="w-full flex-row items-center justify-between  px-5 py-4">
+    <View className="w-full flex-row items-center justify-between  px-5 py-4 mt-5">
       {/* Location */}
       <Pressable
         className="flex-row items-center"
