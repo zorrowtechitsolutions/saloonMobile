@@ -1,9 +1,22 @@
-import { Text, View } from "react-native";
+import { SafeAreaView, ScrollView } from "react-native";
+import HomeHeader from "../components/common/Header";
+import { InputComponent } from "../components/common/Input";
+import { TabsComponent } from "../components/common/Tabs";
 
 export default function Index() {
   return (
-    <View className=" flex justify-center items-center text-2xl font-bold text-cyan-700 bg-red-900">
-      <Text>Nihall</Text>
-    </View>
+    <SafeAreaView className="flex-1 ">
+      <ScrollView
+        className="p-2"
+        contentContainerStyle={{
+          paddingBottom: 50,
+        }}
+        showsVerticalScrollIndicator={false}
+      >
+        <HomeHeader />
+        <InputComponent />
+        <TabsComponent />
+      </ScrollView>
+    </SafeAreaView>
   );
 }
