@@ -11,6 +11,7 @@ import {
 import React from "react";
 import Stylish from "../../../app/screen/Stylish";
 import HeroCarousel from "../user/Carousel";
+import CategoriesComponent from "./Categories";
 
 export function TabsComponent() {
   const [activeTab, setActiveTab] = React.useState("men");
@@ -48,13 +49,17 @@ export function TabsComponent() {
       <TabsContentWrapper>
         <TabsContent value="men">
           <Box className="p-4">
-            <Stylish />
+            <CategoriesComponent />
+            <Stylish title="Top Stylish" />
+            <Stylish title="Near by Stylish" />
           </Box>
         </TabsContent>
 
         <TabsContent value="women">
           <Box className="p-4">
-            <Stylish />
+            <CategoriesComponent />
+            <Stylish title="Top Stylish" />
+            <Stylish title="Near by Stylish" />
           </Box>
         </TabsContent>
       </TabsContentWrapper>
