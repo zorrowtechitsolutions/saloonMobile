@@ -15,7 +15,6 @@ export default function CategoriesComponent() {
         horizontal
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={{
-          paddingHorizontal: 20,
           gap: 10,
         }}
       >

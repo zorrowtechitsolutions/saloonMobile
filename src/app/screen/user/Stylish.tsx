@@ -1,6 +1,6 @@
-import { ArrowRight } from "lucide-react-native";
+import { ChevronRight } from "lucide-react-native";
 import { Pressable, ScrollView, Text, View } from "react-native";
-import { CardComponent } from "../components/common/Card";
+import { CardComponent } from "../../components/common/Card";
 
 const shops = [
   {
@@ -54,13 +54,13 @@ export default function Stylish({ title }: { title: string }) {
   return (
     <View className="mt-5">
       {/* Header */}
-      <View className="mt-6 flex-row items-center justify-between px-5">
-        <Text className="text-[25px] font-bold text-black">{title} </Text>
+      <View className="mt-6 flex-row items-center justify-between">
+        <Text className="text-[20px] font-bold text-black">{title} </Text>
 
         <Pressable className="flex-row items-center">
           <Text className="text-[16px] font-semibold text-black">See All</Text>
 
-          <ArrowRight size={20} color="black" strokeWidth={2.5} />
+          <ChevronRight size={20} color="black" strokeWidth={2.5} />
         </Pressable>
       </View>
 
@@ -69,11 +69,16 @@ export default function Stylish({ title }: { title: string }) {
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
-        contentContainerClassName="gap-4 px-4"
+        contentContainerClassName="gap-4"
         className="mt-4 w-full"
       >
         {shops.map((shop) => (
-          <CardComponent key={shop.id} shop={shop} />
+          <CardComponent
+            key={shop.id}
+            shop={shop}
+            primaryButtonText="View Profile"
+            secondaryButtonText="Book Now"
+          />
         ))}
       </ScrollView>
     </View>
