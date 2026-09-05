@@ -9,7 +9,7 @@ import {
     TabsTriggerText,
 } from "@/components/ui/tabs";
 import React from "react";
-import Stylish from "../../../app/screen/Stylish";
+import Stylish from "../../screen/user/Stylish";
 import HeroCarousel from "../user/Carousel";
 import CategoriesComponent from "./Categories";
 
@@ -21,7 +21,7 @@ export function TabsComponent() {
       <TabsList className="gap-3 px-4 mt-2">
         <TabsTrigger
           value="men"
-          className="h-12 min-w-[120px] rounded-[15px]  "
+          className={`h-12 min-w-[120px]  ${activeTab == "men" ? "rounded-[15px] " : "bg-gray-100 "}  `}
         >
           <TabsTriggerText
             className={`text-base font-semibold ${activeTab == "men" ? "text-white" : "text-black"}`}
@@ -32,7 +32,7 @@ export function TabsComponent() {
 
         <TabsTrigger
           value="women"
-          className="h-12 min-w-[120px]  rounded-[15px]"
+          className={`h-12 min-w-[120px]  ${activeTab == "women" ? "rounded-[15px] " : "bg-gray-100"}  `}
         >
           <TabsTriggerText
             className={`text-base font-semibold ${activeTab == "women" ? "text-white" : "text-black"}`}
@@ -48,7 +48,7 @@ export function TabsComponent() {
 
       <TabsContentWrapper>
         <TabsContent value="men">
-          <Box className="p-4">
+          <Box className="">
             <CategoriesComponent />
             <Stylish title="Top Stylish" />
             <Stylish title="Near by Stylish" />

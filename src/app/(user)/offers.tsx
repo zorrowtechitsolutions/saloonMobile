@@ -4,7 +4,7 @@ import { CardComponent } from "../components/common/Card";
 import HomeHeader from "../components/common/Header";
 import { InputComponent } from "../components/common/Input";
 
-export default function shops() {
+export default function offers() {
   const shops = [
     {
       id: "1",
@@ -12,10 +12,11 @@ export default function shops() {
       shop: "Urban Cuts",
       image: require("@/assets/images/icon.png"),
       rating: "4.7",
-      service: "Beard",
+      service: "Beard + Haircut",
       price: "200 Rs",
       experience: "5 Years",
       distance: "2 KM",
+      offer: "20% offer",
     },
     {
       id: "2",
@@ -23,10 +24,11 @@ export default function shops() {
       shop: "Style Studio",
       image: require("@/assets/images/icon.png"),
       rating: "4.8",
-      service: "Haircut",
+      service: "Haircut + Beard",
       price: "300 Rs",
       experience: "7 Years",
       distance: "1.5 KM",
+      offer: "10% offer",
     },
 
     {
@@ -35,10 +37,11 @@ export default function shops() {
       shop: "Style Studio",
       image: require("@/assets/images/icon.png"),
       rating: "4.8",
-      service: "Haircut",
+      service: "Haircut + Beard",
       price: "300 Rs",
       experience: "7 Years",
       distance: "1.5 KM",
+      offer: "15% offer",
     },
     {
       id: "4",
@@ -46,14 +49,16 @@ export default function shops() {
       shop: "Style Studio",
       image: require("@/assets/images/icon.png"),
       rating: "4.8",
-      service: "Haircut",
+      service: "Haircut + Beard",
       price: "300 Rs",
       experience: "7 Years",
       distance: "1.5 KM",
+      offer: "5% offer",
     },
   ];
 
   const [shopShown, setShopShown] = React.useState(true);
+  const [offerShown, setOfferShown] = React.useState(true);
 
   return (
     <SafeAreaView className="flex-1 ">
@@ -75,8 +80,8 @@ export default function shops() {
             key={shop.id}
             shop={shop}
             shopShown={shopShown}
-            primaryButtonText="View Shop"
-            secondaryButtonText="Book Now"
+            offerShown={offerShown}
+            secondaryButtonText="View Offers"
           />
         ))}
       </ScrollView>

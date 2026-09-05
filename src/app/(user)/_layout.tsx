@@ -27,9 +27,11 @@ export default function TabLayout() {
         />
       </NativeTabs.Trigger>
 
-      <NativeTabs.Trigger name="wishlist">
+      <NativeTabs.Trigger name="offers">
         <NativeTabs.Trigger.Label hidden />
-        <NativeTabs.Trigger.Icon sf="heart" md="favorite" />
+        <NativeTabs.Trigger.Icon
+          src={require("../../../assets/images/icons/badge-percent.png")}
+        />
       </NativeTabs.Trigger>
 
       <NativeTabs.Trigger name="bookings">

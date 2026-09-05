@@ -1,15 +1,21 @@
-import { Pressable, Text, View } from "react-native";
+import { Pressable, Text } from "react-native";
 
-export default function ButtonComponent() {
+export default function ButtonComponent({
+  buttonText,
+  textColor,
+  bgColor,
+}: {
+  buttonText?: string;
+  textColor?: string;
+  bgColor?: string;
+}) {
   return (
-    <View className="mt-4 flex-row gap-3">
-      <Pressable className="h-14 flex-1 items-center justify-center rounded-[15px] border border-black bg-white">
-        <Text className="text-[17px] font-semibold text-black">View Shop</Text>
-      </Pressable>
-
-      <Pressable className="h-14 flex-1 items-center justify-center rounded-[15px] bg-black">
-        <Text className="text-[17px] font-semibold text-white">Book Now</Text>
-      </Pressable>
-    </View>
+    <Pressable
+      className={`h-12 flex-1 items-center justify-center rounded-[10px] ${bgColor}`}
+    >
+      <Text className={`text-[17px] font-semibold ${textColor}`}>
+        {buttonText}
+      </Text>
+    </Pressable>
   );
 }
