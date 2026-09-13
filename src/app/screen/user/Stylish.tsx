@@ -74,6 +74,8 @@ export default function Stylish({ title }: { title: string }) {
       >
         {shops.map((shop) => (
           <CardComponent
+            // width="w-max-[360px]"
+            width="w-[360px]"
             key={shop.id}
             shop={shop}
             primaryButtonText="View Profile"

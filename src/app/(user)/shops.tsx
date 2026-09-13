@@ -72,6 +72,7 @@ export default function shops() {
       >
         {shops.map((shop) => (
           <CardComponent
+            width="w-max-[400px]"
             key={shop.id}
             shop={shop}
             shopShown={shopShown}

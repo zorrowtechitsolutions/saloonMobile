@@ -77,6 +77,7 @@ export default function offers() {
       >
         {shops.map((shop) => (
           <CardComponent
+            width="w-max-[400px]"
             key={shop.id}
             shop={shop}
             shopShown={shopShown}

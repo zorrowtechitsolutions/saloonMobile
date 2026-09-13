@@ -5,6 +5,7 @@ import ButtonBox from "../user/Buttonbox";
 // 360px
 
 export function CardComponent({
+  width,
   shop,
   shopShown,
   primaryButtonText,
@@ -16,10 +17,11 @@ export function CardComponent({
   primaryButtonText?: string;
   secondaryButtonText?: string;
   offerShown?: boolean;
+  width?: string;
 }) {
   return (
     <View
-      className={`${shopShown ? "w-max-[400px] " : "w-[360px] "} shrink-0 rounded-[22px] bg-white p-4 shadow-sm`}
+      className={` ${width} shrink-0 rounded-[22px] bg-white p-4 shadow-sm`}
     >
       {shopShown && !offerShown ? (
         <Image
