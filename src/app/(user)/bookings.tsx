@@ -3,6 +3,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import CalendarComponent from "../components/common/Calendar";
 import { CardComponent } from "../components/common/Card";
 import HeaderComponent from "../components/common/Header";
+import { InputComponent } from "../components/common/Input";
 import SegmentedControlComponet from "../components/common/SegmentedControl";
 
 const shops = [
@@ -57,6 +58,7 @@ export default function bookings() {
   return (
     <SafeAreaView className="flex-1 ">
       <HeaderComponent />
+      <InputComponent />
 
       <View className="p-3 flex gap-3">
         <CalendarComponent />

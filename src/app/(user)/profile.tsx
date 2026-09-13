@@ -6,6 +6,7 @@ import {
   AvatarFallbackText,
   AvatarImage,
 } from "@/components/ui/avatar";
+import { router } from "expo-router";
 import {
   Bell,
   BriefcaseBusiness,
@@ -151,6 +152,7 @@ export default function profile() {
             icon={<Heart size={19} color="#111" strokeWidth={1.5} />}
             title="My Favorites"
             subtitle="View saved stylists and shops"
+            onPress={() => router.push("/screen/user/wishlist")}
           />
         </Section>
 
