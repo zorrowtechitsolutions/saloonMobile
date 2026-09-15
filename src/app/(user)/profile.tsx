@@ -116,11 +116,14 @@ export default function profile() {
           </View>
 
           {/* Edit button */}
-          <Pressable className="flex-row items-center rounded-full border border-gray-500 px-2.5 py-1">
-            <Text className="mr-1 text-[7px] text-black">Edit Profile</Text>
 
-            <Pencil size={10} color="#111" strokeWidth={1.5} />
-          </Pressable>
+          <ButtonComponent
+            buttonText="Edit Profile"
+            textColor="text-black"
+            bgColor="bg-white"
+            boder="border-black"
+            icon={Pencil}
+          />
         </View>
 
         {/* Grow With Us */}
@@ -129,6 +132,7 @@ export default function profile() {
             icon={<UserRound size={19} color="#111" strokeWidth={1.5} />}
             title="Create Professional Profile"
             subtitle="Showcase Your Skills and get discovered by customers"
+            onPress={() => router.push("/screen/user/Professional")}
           />
 
           <AccountItem
@@ -152,7 +156,7 @@ export default function profile() {
             icon={<Heart size={19} color="#111" strokeWidth={1.5} />}
             title="My Favorites"
             subtitle="View saved stylists and shops"
-            onPress={() => router.push("/screen/user/wishlist")}
+            onPress={() => router.push("/screen/user/Wishlist")}
           />
         </Section>
 
