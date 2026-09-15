@@ -1,12 +1,16 @@
 import SegmentedControl from "@expo/ui/community/segmented-control";
 import { useState } from "react";
 
-export default function SegmentedControlComponet() {
+type Props = {
+  segmented: string[];
+};
+
+export default function SegmentedControlComponet({ segmented }: Props) {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   return (
     <SegmentedControl
-      values={["One", "Two", "Three"]}
+      values={segmented}
       selectedIndex={selectedIndex}
       onChange={(event) => {
         setSelectedIndex(event.nativeEvent.selectedSegmentIndex);

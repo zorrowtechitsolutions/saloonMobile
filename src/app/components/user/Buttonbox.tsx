@@ -38,6 +38,7 @@ export default function ButtonBox({
           buttonText={primaryButtonText}
           textColor="text-black"
           bgColor="bg-white"
+          height="h-12"
         />
       )}
 
@@ -45,6 +46,7 @@ export default function ButtonBox({
         buttonText={secondaryButtonText}
         textColor="text-white"
         bgColor="bg-black"
+        height="h-12"
       />
     </View>
   );

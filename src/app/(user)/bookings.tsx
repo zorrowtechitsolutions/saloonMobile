@@ -62,7 +62,9 @@ export default function bookings() {
 
       <View className="p-3 flex gap-3">
         <CalendarComponent />
-        <SegmentedControlComponet />
+        <SegmentedControlComponet
+          segmented={["Upcoming", "Past", "Cancelled"]}
+        />
       </View>
 
       <ScrollView

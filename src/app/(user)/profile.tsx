@@ -27,6 +27,7 @@ import {
   WalletCards,
 } from "lucide-react-native";
 import ButtonComponent from "../components/common/Button";
+import SegmentedControlComponet from "../components/common/SegmentedControl";
 
 type AccountItemProps = {
   icon: React.ReactNode;
@@ -79,7 +80,7 @@ function Section({ title, children }: SectionProps) {
   );
 }
 
-export default function profile() {
+export default function Profile() {
   return (
     <View className="flex-1 bg-[#FCFBF7]">
       <ScrollView
@@ -87,7 +88,8 @@ export default function profile() {
         contentContainerStyle={{
           paddingHorizontal: 16,
           paddingTop: 38,
-          paddingBottom: 150,
+          paddingBottom: 80,
+          flexGrow: 1,
         }}
       >
         {/* Header */}
@@ -97,8 +99,6 @@ export default function profile() {
 
         {/* Profile Card */}
         <View className="flex-row items-center rounded-[15px] bg-white px-3.5 py-3 shadow-sm">
-          {/* Profile image */}
-
           <Avatar>
             <AvatarFallbackText>Jane Doe is test</AvatarFallbackText>
             <AvatarImage
@@ -108,14 +108,10 @@ export default function profile() {
             />
           </Avatar>
 
-          {/* User information */}
           <View className="ml-2.5 flex-1">
             <Text className="text-[15px] font-semibold text-black">Emma</Text>
-
             <Text className="mt-0.5 text-[9px] text-black">+91 39860843</Text>
           </View>
-
-          {/* Edit button */}
 
           <ButtonComponent
             buttonText="Edit Profile"
@@ -123,7 +119,26 @@ export default function profile() {
             bgColor="bg-white"
             boder="border-black"
             icon={Pencil}
+            height="h-9"
           />
+        </View>
+
+        {/* Switch Mode — wrapped in fixed-height container so it can't push siblings off-screen */}
+        <View className="rounded-[20px] mt-4 bg-white px-6 py-6 shadow-sm">
+          <View className="mb-6">
+            <Text className="mt-3 text-[13px] font-medium text-black">
+              Switch Mode
+            </Text>
+            <Text className="mt-1 leading-5 text-gray-400">
+              Choose how you want to use the app
+            </Text>
+          </View>
+
+          <View style={{ minHeight: 44 }}>
+            <SegmentedControlComponet
+              segmented={["User", "Freelancer", "Shop"]}
+            />
+          </View>
         </View>
 
         {/* Grow With Us */}
@@ -134,7 +149,6 @@ export default function profile() {
             subtitle="Showcase Your Skills and get discovered by customers"
             onPress={() => router.push("/screen/user/Professional")}
           />
-
           <AccountItem
             icon={
               <BriefcaseBusiness size={19} color="#111" strokeWidth={1.5} />
@@ -142,7 +156,6 @@ export default function profile() {
             title="Create Freelance"
             subtitle="Create Your Freelance"
           />
-
           <AccountItem
             icon={<Store size={19} color="#111" strokeWidth={1.5} />}
             title="Create a Shop"
@@ -166,12 +179,10 @@ export default function profile() {
             icon={<WalletCards size={19} color="#111" strokeWidth={1.5} />}
             title="My Wallet"
           />
-
           <AccountItem
             icon={<Gift size={19} color="#111" strokeWidth={1.5} />}
             title="Refer & Earn"
           />
-
           <AccountItem
             icon={<Coins size={19} color="#111" strokeWidth={1.5} />}
             title="Coin"
@@ -184,12 +195,10 @@ export default function profile() {
             icon={<UserRound size={19} color="#111" strokeWidth={1.5} />}
             title="Personal Information"
           />
-
           <AccountItem
             icon={<MapPin size={19} color="#111" strokeWidth={1.5} />}
             title="Saved Adress"
           />
-
           <AccountItem
             icon={<CreditCard size={19} color="#111" strokeWidth={1.5} />}
             title="Payment Method"
@@ -202,12 +211,10 @@ export default function profile() {
             icon={<Bell size={19} color="#111" strokeWidth={1.5} />}
             title="Notification"
           />
-
           <AccountItem
             icon={<Globe size={19} color="#111" strokeWidth={1.5} />}
             title="Language"
           />
-
           <AccountItem
             icon={<Settings size={19} color="#111" strokeWidth={1.5} />}
             title="App Settings"
@@ -215,17 +222,15 @@ export default function profile() {
         </Section>
 
         {/* Help */}
-        <Section title="Preferences">
+        <Section title="Help">
           <AccountItem
             icon={<CircleHelp size={19} color="#111" strokeWidth={1.5} />}
             title="Help & Support"
           />
-
           <AccountItem
             icon={<FileText size={19} color="#111" strokeWidth={1.5} />}
             title="Terms & Conditions"
           />
-
           <AccountItem
             icon={<ShieldCheck size={19} color="#111" strokeWidth={1.5} />}
             title="Privacy & Security"
@@ -233,13 +238,13 @@ export default function profile() {
         </Section>
 
         {/* Logout */}
-
-        <View className="mt-4">
+        <View className="mt-4 mb-6">
           <ButtonComponent
             buttonText="Log Out"
             textColor="text-[#C96D67]"
             bgColor="bg-white"
             boder="border-[#B66C65]"
+            height="h-12"
           />
         </View>
       </ScrollView>

@@ -61,7 +61,7 @@ export default function WishlistScreen() {
       <InputComponent />
 
       <View className="p-3">
-        <SegmentedControlComponet />
+        <SegmentedControlComponet segmented={["Stylish", "Shop"]} />
       </View>
       <ScrollView
         showsVerticalScrollIndicator={false}

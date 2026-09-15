@@ -6,16 +6,18 @@ export default function ButtonComponent({
   bgColor,
   boder,
   icon: IconComponent,
+  height,
 }: {
   buttonText?: string;
   textColor?: string;
   bgColor?: string;
   boder?: string;
   icon?: any;
+  height: string;
 }) {
   return (
     <Pressable
-      className={`h-12 flex-1 flex-row items-center justify-center rounded-[10px] border ${boder} ${bgColor}`}
+      className={`${height} flex-1 flex-row items-center justify-center rounded-[10px] border ${boder} ${bgColor}`}
     >
       {IconComponent && (
         <IconComponent

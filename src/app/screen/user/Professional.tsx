@@ -129,6 +129,7 @@ export default function ProfessionalScreen() {
               bgColor="bg-black"
               boder="border-black"
               icon={Pencil}
+              height="h-12"
             />
             {/* View Profile */}
 
@@ -138,6 +139,7 @@ export default function ProfessionalScreen() {
               bgColor="bg-white"
               boder="border-black"
               icon={Eye}
+              height="h-12"
             />
           </View>
         </View>
@@ -204,6 +206,7 @@ export default function ProfessionalScreen() {
               bgColor="bg-black"
               boder="border-black"
               icon={Plus}
+              height="h-12"
             />
           </View>
         </View>
@@ -249,6 +252,7 @@ export default function ProfessionalScreen() {
               bgColor="bg-black"
               boder="border-black"
               icon={Plus}
+              height="h-12"
             />
           </View>
         </View>
@@ -283,6 +287,7 @@ export default function ProfessionalScreen() {
               bgColor="bg-black"
               boder="border-black"
               icon={Plus}
+              height="h-12"
             />
           </View>
         </View>
