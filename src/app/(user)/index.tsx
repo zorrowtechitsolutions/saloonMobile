@@ -15,7 +15,11 @@ export default function Index() {
       >
         <HomeHeader />
         <InputComponent />
-        <TabsComponent />
+        <TabsComponent
+          tabs={["Men", "Women"]}
+          showCarousel={true}
+          showCard={true}
+        />
       </ScrollView>
     </SafeAreaView>
   );

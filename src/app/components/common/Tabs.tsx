@@ -1,67 +1,92 @@
 import { Box } from "@/components/ui/box";
 import {
-    Tabs,
-    TabsContent,
-    TabsContentWrapper,
-    TabsIndicator,
-    TabsList,
-    TabsTrigger,
-    TabsTriggerText,
+  Tabs,
+  TabsContent,
+  TabsContentWrapper,
+  TabsIndicator,
+  TabsList,
+  TabsTrigger,
+  TabsTriggerText,
 } from "@/components/ui/tabs";
 import React from "react";
+
+import ServicesScreen from "../../screen/user/Services";
 import Stylish from "../../screen/user/Stylish";
 import HeroCarousel from "../user/Carousel";
 import CategoriesComponent from "./Categories";
 
-export function TabsComponent() {
-  const [activeTab, setActiveTab] = React.useState("men");
+type TabsComponentProps = {
+  tabs: string[];
+  showCard?: boolean;
+  showCarousel?: boolean;
+};
+
+export function TabsComponent({
+  tabs,
+  showCarousel,
+  showCard,
+}: TabsComponentProps) {
+  const [activeTab, setActiveTab] = React.useState(tabs[0]);
+
+  React.useEffect(() => {
+    setActiveTab(tabs[0]?.toLowerCase());
+  }, []);
 
   return (
-    <Tabs defaultValue="men" value={activeTab} onValueChange={setActiveTab}>
-      <TabsList className="gap-3 px-4 mt-2">
-        <TabsTrigger
-          value="men"
-          className={`h-12 min-w-[120px]  ${activeTab == "men" ? "rounded-[15px] " : "bg-gray-100 "}  `}
-        >
-          <TabsTriggerText
-            className={`text-base font-semibold ${activeTab == "men" ? "text-white" : "text-black"}`}
-          >
-            Men
-          </TabsTriggerText>
-        </TabsTrigger>
+    <Tabs value={activeTab} onValueChange={setActiveTab} className="flex-1">
+      {/* TAB BUTTONS */}
+      <TabsList className="mt-2 gap-3 px-4">
+        {tabs.map((tab) => {
+          const value = tab.toLowerCase();
 
-        <TabsTrigger
-          value="women"
-          className={`h-12 min-w-[120px]  ${activeTab == "women" ? "rounded-[15px] " : "bg-gray-100"}  `}
-        >
-          <TabsTriggerText
-            className={`text-base font-semibold ${activeTab == "women" ? "text-white" : "text-black"}`}
-          >
-            Women
-          </TabsTriggerText>
-        </TabsTrigger>
+          const isActive = activeTab === value;
 
-        <TabsIndicator className="bg-black rounded-[15px] border" />
+          return (
+            <TabsTrigger
+              key={value}
+              value={value}
+              className={`h-12 min-w-[120px] rounded-[15px] ${
+                isActive ? "bg-black" : "bg-gray-100"
+              }`}
+            >
+              <TabsTriggerText
+                className={`text-base font-semibold ${
+                  isActive ? "text-white" : "text-black"
+                }`}
+              >
+                {tab}
+              </TabsTriggerText>
+            </TabsTrigger>
+          );
+        })}
+
+        <TabsIndicator className="rounded-[15px] " />
       </TabsList>
 
-      <HeroCarousel />
+      {/* CAROUSEL */}
+      {showCarousel && <HeroCarousel />}
 
+      {/* TAB CONTENT */}
       <TabsContentWrapper>
-        <TabsContent value="men">
-          <Box className="">
-            <CategoriesComponent />
-            <Stylish title="Top Stylish" />
-            <Stylish title="Near by Stylish" />
-          </Box>
-        </TabsContent>
+        {tabs.map((tab) => {
+          const value = tab.toLowerCase();
 
-        <TabsContent value="women">
-          <Box className="p-4">
-            <CategoriesComponent />
-            <Stylish title="Top Stylish" />
-            <Stylish title="Near by Stylish" />
-          </Box>
-        </TabsContent>
+          return (
+            <TabsContent key={value} value={value}>
+              <Box className="p-4">
+                {showCard ? (
+                  <>
+                    <CategoriesComponent />
+                    <Stylish title="Top Stylish" />
+                    <Stylish title="Near by Stylish" />
+                  </>
+                ) : (
+                  <ServicesScreen />
+                )}
+              </Box>
+            </TabsContent>
+          );
+        })}
       </TabsContentWrapper>
     </Tabs>
   );

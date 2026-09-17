@@ -1,3 +1,4 @@
+import { router } from "expo-router";
 import { Pressable, Text } from "react-native";
 
 export default function ButtonComponent({
@@ -15,9 +16,16 @@ export default function ButtonComponent({
   icon?: any;
   height: string;
 }) {
+  const handleButton = () => {
+    if (buttonText == "View Shop") {
+      router.push("/screen/user/ShopDetails");
+    }
+  };
+
   return (
     <Pressable
       className={`${height} flex-1 flex-row items-center justify-center rounded-[10px] border ${boder} ${bgColor}`}
+      onPress={() => handleButton()}
     >
       {IconComponent && (
         <IconComponent

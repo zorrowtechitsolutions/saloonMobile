@@ -1,5 +1,4 @@
-import React from "react";
-import { Pressable, ScrollView, Text, View } from "react-native";
+import { ScrollView, Text, View } from "react-native";
 
 import {
   Avatar,
@@ -10,7 +9,6 @@ import { router } from "expo-router";
 import {
   Bell,
   BriefcaseBusiness,
-  ChevronRight,
   CircleHelp,
   Coins,
   CreditCard,
@@ -26,59 +24,10 @@ import {
   UserRound,
   WalletCards,
 } from "lucide-react-native";
+import AccountItemComponent from "../components/common/AccountItem";
 import ButtonComponent from "../components/common/Button";
+import SectionComponet from "../components/common/Section";
 import SegmentedControlComponet from "../components/common/SegmentedControl";
-
-type AccountItemProps = {
-  icon: React.ReactNode;
-  title: string;
-  subtitle?: string;
-  onPress?: () => void;
-};
-
-function AccountItem({ icon, title, subtitle, onPress }: AccountItemProps) {
-  return (
-    <Pressable
-      onPress={onPress}
-      className="flex-row items-center px-4 py-3.5 bg-white border-b border-gray-100"
-    >
-      {/* Icon */}
-      <View className="w-7 items-center justify-center">{icon}</View>
-
-      {/* Text */}
-      <View className="flex-1 ml-4">
-        <Text className="text-[13px] font-medium text-black">{title}</Text>
-
-        {subtitle && (
-          <Text className="mt-0.5 text-[9px] leading-[12px] text-gray-500">
-            {subtitle}
-          </Text>
-        )}
-      </View>
-
-      <ChevronRight size={20} color="#111" strokeWidth={1.5} />
-    </Pressable>
-  );
-}
-
-type SectionProps = {
-  title: string;
-  children: React.ReactNode;
-};
-
-function Section({ title, children }: SectionProps) {
-  return (
-    <View className="mt-4">
-      <Text className="mb-2 px-0.5 text-[13px] font-medium text-black">
-        {title}
-      </Text>
-
-      <View className="overflow-hidden rounded-[14px] bg-white shadow-sm">
-        {children}
-      </View>
-    </View>
-  );
-}
 
 export default function Profile() {
   return (
@@ -142,100 +91,100 @@ export default function Profile() {
         </View>
 
         {/* Grow With Us */}
-        <Section title="Grow With Us">
-          <AccountItem
+        <SectionComponet title="Grow With Us">
+          <AccountItemComponent
             icon={<UserRound size={19} color="#111" strokeWidth={1.5} />}
             title="Create Professional Profile"
             subtitle="Showcase Your Skills and get discovered by customers"
             onPress={() => router.push("/screen/user/Professional")}
           />
-          <AccountItem
+          <AccountItemComponent
             icon={
               <BriefcaseBusiness size={19} color="#111" strokeWidth={1.5} />
             }
             title="Create Freelance"
             subtitle="Create Your Freelance"
           />
-          <AccountItem
+          <AccountItemComponent
             icon={<Store size={19} color="#111" strokeWidth={1.5} />}
             title="Create a Shop"
             subtitle="List your salon, and manage booking staff & services"
           />
-        </Section>
+        </SectionComponet>
 
         {/* My Account */}
-        <Section title="My Account">
-          <AccountItem
+        <SectionComponet title="My Account">
+          <AccountItemComponent
             icon={<Heart size={19} color="#111" strokeWidth={1.5} />}
             title="My Favorites"
             subtitle="View saved stylists and shops"
             onPress={() => router.push("/screen/user/Wishlist")}
           />
-        </Section>
+        </SectionComponet>
 
         {/* Rewards & Wallet */}
-        <Section title="Rewards & Wallet">
-          <AccountItem
+        <SectionComponet title="Rewards & Wallet">
+          <AccountItemComponent
             icon={<WalletCards size={19} color="#111" strokeWidth={1.5} />}
             title="My Wallet"
           />
-          <AccountItem
+          <AccountItemComponent
             icon={<Gift size={19} color="#111" strokeWidth={1.5} />}
             title="Refer & Earn"
           />
-          <AccountItem
+          <AccountItemComponent
             icon={<Coins size={19} color="#111" strokeWidth={1.5} />}
             title="Coin"
           />
-        </Section>
+        </SectionComponet>
 
         {/* Account */}
-        <Section title="Account">
-          <AccountItem
+        <SectionComponet title="Account">
+          <AccountItemComponent
             icon={<UserRound size={19} color="#111" strokeWidth={1.5} />}
             title="Personal Information"
           />
-          <AccountItem
+          <AccountItemComponent
             icon={<MapPin size={19} color="#111" strokeWidth={1.5} />}
             title="Saved Adress"
           />
-          <AccountItem
+          <AccountItemComponent
             icon={<CreditCard size={19} color="#111" strokeWidth={1.5} />}
             title="Payment Method"
           />
-        </Section>
+        </SectionComponet>
 
         {/* Preferences */}
-        <Section title="Preferences">
-          <AccountItem
+        <SectionComponet title="Preferences">
+          <AccountItemComponent
             icon={<Bell size={19} color="#111" strokeWidth={1.5} />}
             title="Notification"
           />
-          <AccountItem
+          <AccountItemComponent
             icon={<Globe size={19} color="#111" strokeWidth={1.5} />}
             title="Language"
           />
-          <AccountItem
+          <AccountItemComponent
             icon={<Settings size={19} color="#111" strokeWidth={1.5} />}
             title="App Settings"
           />
-        </Section>
+        </SectionComponet>
 
         {/* Help */}
-        <Section title="Help">
-          <AccountItem
+        <SectionComponet title="Help">
+          <AccountItemComponent
             icon={<CircleHelp size={19} color="#111" strokeWidth={1.5} />}
             title="Help & Support"
           />
-          <AccountItem
+          <AccountItemComponent
             icon={<FileText size={19} color="#111" strokeWidth={1.5} />}
             title="Terms & Conditions"
           />
-          <AccountItem
+          <AccountItemComponent
             icon={<ShieldCheck size={19} color="#111" strokeWidth={1.5} />}
             title="Privacy & Security"
           />
-        </Section>
+        </SectionComponet>
 
         {/* Logout */}
         <View className="mt-4 mb-6">
