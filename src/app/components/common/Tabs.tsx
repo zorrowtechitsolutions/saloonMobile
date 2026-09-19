@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/tabs";
 import React from "react";
 
+import GalleryScreen from "../../screen/user/Gallery";
 import ServicesScreen from "../../screen/user/Services";
 import Stylish from "../../screen/user/Stylish";
 import HeroCarousel from "../user/Carousel";
@@ -31,6 +32,19 @@ export function TabsComponent({
   React.useEffect(() => {
     setActiveTab(tabs[0]?.toLowerCase());
   }, []);
+
+  const renderTabContent = (value: string) => {
+    switch (value) {
+      case "services":
+        return <ServicesScreen />;
+
+      case "gallery":
+        return <GalleryScreen />;
+
+      default:
+        return null;
+    }
+  };
 
   return (
     <Tabs value={activeTab} onValueChange={setActiveTab} className="flex-1">
@@ -81,7 +95,7 @@ export function TabsComponent({
                     <Stylish title="Near by Stylish" />
                   </>
                 ) : (
-                  <ServicesScreen />
+                  renderTabContent(value)
                 )}
               </Box>
             </TabsContent>
