@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/tabs";
 import React from "react";
 
+import AboutScreen from "../../screen/user/About";
 import GalleryScreen from "../../screen/user/Gallery";
 import ReviewsScreen from "../../screen/user/Review";
 import ServicesScreen from "../../screen/user/Services";
@@ -44,6 +45,9 @@ export function TabsComponent({
 
       case "reviews":
         return <ReviewsScreen />;
+
+      case "about":
+        return <AboutScreen />;
 
       default:
         return <ServicesScreen />;
