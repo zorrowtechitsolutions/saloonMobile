@@ -20,6 +20,10 @@ export default function ButtonComponent({
     if (buttonText == "View Shop") {
       router.push("/screen/user/ShopDetails");
     }
+
+    if (buttonText == "View Profile") {
+      router.push("/screen/user/StylishDetails");
+    }
   };
 
   return (

@@ -5,21 +5,33 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import ButtonComponent from "../../components/common/Button";
 import { TabsComponent } from "../../components/common/Tabs";
 
-export default function ShopDetailsScreen() {
+export default function StylishDetailsScreen() {
   return (
     <SafeAreaView className="flex-1">
       <View className="p-1 h-full w-full">
-        <Image
-          source={require("@/assets/images/icon.png")}
-          className="h-[30%] w-[100%] shrink-0 rounded-[14px]"
-          resizeMode="cover"
-        />
-
-        <Pressable className="h-11 w-11 items-center absolute right-7 top-6 justify-center rounded-full bg-gray-100">
-          <Heart size={22} color="black" fill="black" />
+        <View className="relative h-[150px] w-[150px] m-auto  overflow-hidden rounded-full">
+          <Image
+            source={require("@/assets/images/icon.png")}
+            className="h-full w-full"
+            resizeMode="cover"
+          />
+        </View>
+        <Pressable className="h-11 w-11 items-center absolute right-[30%] top-2 justify-center rounded-full bg-gray-100">
+          <Heart size={22} color="black" fill="white" />
         </Pressable>
+
         <Pressable
-          className="h-11 w-11 items-center absolute left-7 top-6 justify-center rounded-full bg-gray-100"
+          className="absolute left-7 top-6 h-11 w-11 items-center justify-center rounded-full bg-gray-100"
+          style={{
+            shadowColor: "#000",
+            shadowOffset: {
+              width: 0,
+              height: 2,
+            },
+            shadowOpacity: 0.15,
+            shadowRadius: 5,
+            elevation: 4,
+          }}
           onPress={() => router.back()}
         >
           <ChevronLeft size={22} color="black" />
