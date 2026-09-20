@@ -11,6 +11,7 @@ import {
 import React from "react";
 
 import GalleryScreen from "../../screen/user/Gallery";
+import ReviewsScreen from "../../screen/user/Review";
 import ServicesScreen from "../../screen/user/Services";
 import Stylish from "../../screen/user/Stylish";
 import HeroCarousel from "../user/Carousel";
@@ -41,8 +42,11 @@ export function TabsComponent({
       case "gallery":
         return <GalleryScreen />;
 
+      case "reviews":
+        return <ReviewsScreen />;
+
       default:
-        return null;
+        return <ServicesScreen />;
     }
   };
 
