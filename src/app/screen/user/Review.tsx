@@ -1,5 +1,14 @@
 import { Star } from "lucide-react-native";
-import { Image, Pressable, ScrollView, Text, View } from "react-native";
+import {
+  Dimensions,
+  Image,
+  ScrollView,
+  Text,
+  View
+} from "react-native";
+import ButtonComponent from "../../components/common/Button";
+
+const { height: SCREEN_HEIGHT } = Dimensions.get("window");
 
 const reviews = [
   {
@@ -59,7 +68,10 @@ const Stars = ({ rating, size = 13 }: { rating: number; size?: number }) => {
 export default function ReviewsScreen() {
   return (
     <ScrollView
-      className=" w-full h-full "
+      style={{
+        width: "100%",
+        height: SCREEN_HEIGHT,
+      }}
       showsVerticalScrollIndicator={false}
       contentContainerStyle={{
         paddingHorizontal: 24,
@@ -115,11 +127,14 @@ export default function ReviewsScreen() {
         </View>
 
         {/* Write Review */}
-        <Pressable className="mt-4 h-[44px] items-center justify-center rounded-full border border-[#222222]">
-          <Text className="text-[14px] font-medium text-[#111111]">
-            Write a Review
-          </Text>
-        </Pressable>
+
+        <ButtonComponent
+          buttonText="Write a Review"
+          textColor="text-black"
+          bgColor="bg-white"
+          boder="border-black"
+          height="h-12"
+        />
       </View>
 
       {/* Reviews */}

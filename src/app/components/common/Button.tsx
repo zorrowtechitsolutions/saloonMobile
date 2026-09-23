@@ -24,6 +24,14 @@ export default function ButtonComponent({
     if (buttonText == "View Profile") {
       router.push("/screen/user/StylishDetails");
     }
+
+    if (buttonText == "Write a Review") {
+      router.push("/screen/user/review/create");
+    }
+
+    if (buttonText == "Book Appointment") {
+      router.push("/screen/user/services/selectServices");
+    }
   };
 
   return (

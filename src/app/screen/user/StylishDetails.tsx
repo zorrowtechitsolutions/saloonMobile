@@ -68,7 +68,7 @@ export default function StylishDetailsScreen() {
           showCard={false}
         />
       </View>
-      <View className="absolute bottom-6 left-0 right-0 w-full  px-4 py-3">
+      <View className="absolute bottom-6 left-0 right-0 w-full  px-6 py-3">
         <ButtonComponent
           buttonText="Book Appointment"
           textColor="text-white"
