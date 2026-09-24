@@ -1,35 +1,61 @@
 import { MapPin, Phone, Star } from "lucide-react-native";
 import {
-    Dimensions,
-    Linking,
-    Pressable,
-    ScrollView,
-    Text,
-    View,
+  Dimensions,
+  Linking,
+  Pressable,
+  ScrollView,
+  Text,
+  View,
 } from "react-native";
+import AccordionComponent from "../../components/common/Accordion";
 
 const { height: SCREEN_HEIGHT } = Dimensions.get("window");
 
 const services = [
   {
     id: 1,
-    name: "Haircut",
-    price: 200,
+    name: "Mens Groom",
+    services: [
+      {
+        id: 5,
+        name: "Beard Trim",
+        price: 150,
+      },
+
+      {
+        id: 3,
+        name: "Hair Styling",
+        price: 300,
+      },
+      {
+        id: 4,
+        name: "Hair Wash",
+        price: 100,
+      },
+    ],
   },
+
   {
     id: 2,
-    name: "Beard Trim",
-    price: 150,
-  },
-  {
-    id: 3,
-    name: "Hair Styling",
-    price: 300,
-  },
-  {
-    id: 4,
-    name: "Hair Wash",
-    price: 100,
+    name: "Girls Groom",
+    services: [
+      {
+        id: 5,
+        name: "Beard Trim",
+        price: 150,
+      },
+
+      {
+        id: 3,
+        name: "Hair Styling",
+        price: 300,
+      },
+      {
+        id: 4,
+        name: "Hair Wash",
+        price: 100,
+      },
+    ],
   },
 ];
 
@@ -153,22 +179,7 @@ export default function AboutScreen() {
             Services & Pricing
           </Text>
 
-          <View className="mt-4">
-            {services.map((service) => (
-              <View
-                key={service.id}
-                className="mb-3 flex-row items-center justify-between rounded-[12px] border border-[#E5E2DC] bg-white px-3 py-4"
-              >
-                <Text className="text-[17px] text-[#292929]">
-                  {service.name}
-                </Text>
-
-                <Text className="text-[17px] font-semibold text-[#292929]">
-                  ₹ {service.price}
-                </Text>
-              </View>
-            ))}
-          </View>
+          <AccordionComponent services={services} />
         </View>
       </ScrollView>
     </View>

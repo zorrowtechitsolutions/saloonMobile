@@ -4,6 +4,58 @@ import AccordionComponent from "../../../components/common/Accordion";
 import AppBar from "../../../components/common/AppBar";
 import ButtonComponent from "../../../components/common/Button";
 
+const services = [
+  {
+    id: 1,
+    name: "Mens Groom",
+    services: [
+      {
+        name: "Beard Trim",
+        price: 150,
+        time: "15 Mints",
+      },
+
+      {
+        id: 3,
+        name: "Hair Styling",
+        price: 300,
+        time: "15 Mints",
+      },
+      {
+        id: 4,
+        name: "Hair Wash",
+        price: 100,
+        time: "15 Mints",
+      },
+    ],
+  },
+
+  {
+    id: 2,
+    name: "Girls Groom",
+    services: [
+      {
+        name: "Beard Trim",
+        price: 150,
+        time: "15 Mints",
+      },
+
+      {
+        id: 3,
+        name: "Hair Styling",
+        price: 300,
+        time: "15 Mints",
+      },
+      {
+        id: 4,
+        name: "Hair Wash",
+        price: 100,
+        time: "15 Mints",
+      },
+    ],
+  },
+];
+
 export default function SelectServices() {
   return (
     <SafeAreaView className="flex-1">
@@ -20,7 +72,7 @@ export default function SelectServices() {
           }}
         >
           <View className="p-4">
-            <AccordionComponent />
+            <AccordionComponent services={services} />
           </View>
         </ScrollView>
 
