@@ -20,11 +20,11 @@ export default function AppBar({
   const [openSearchBox, setOpenSearchBox] = useState(false);
 
   return (
-    <View className="h-16 w-full flex-row items-center px-4">
+    <View className="h-16 w-full">
       {openSearchBox === false ? (
-        <>
+        <View className="h-16 w-full flex-row items-center px-4">
           {/* Left */}
-          <View className="w-12 items-start justify-center">
+          <View className="z-10 w-12 items-start justify-center">
             {showBack && (
               <Pressable
                 onPress={() => router.back()}
@@ -35,13 +35,13 @@ export default function AppBar({
             )}
           </View>
 
-          {/* Center */}
-          <View className="flex-1 items-center justify-center">
+          {/* Center - always exactly centered */}
+          <View className="absolute inset-0 items-center justify-center">
             <Text className="text-xl font-bold text-gray-900">{title}</Text>
           </View>
 
           {/* Right */}
-          <View className="flex-row items-center justify-end gap-2">
+          <View className="ml-auto flex-row items-center gap-2">
             {rightComponent}
 
             {searchShow && (
@@ -53,10 +53,10 @@ export default function AppBar({
               </Pressable>
             )}
           </View>
-        </>
+        </View>
       ) : (
         /* Search mode */
-        <View className="flex-1 flex-row items-center gap-2">
+        <View className="h-16 w-full flex-row items-center gap-2 px-4">
           <View className="flex-1">
             <InputComponent icon={Search} placeholderText="Search" />
           </View>

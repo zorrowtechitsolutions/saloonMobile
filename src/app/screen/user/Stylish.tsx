@@ -1,81 +1,85 @@
-import { ChevronRight } from "lucide-react-native";
-import { Pressable, ScrollView, Text, View } from "react-native";
+import { Search } from "lucide-react-native";
+import React from "react";
+import { SafeAreaView, ScrollView, View } from "react-native";
+import CategoriesComponent from "../../../app/components/common/Categories";
+import AppBar from "../../components/common/AppBar";
 import { CardComponent } from "../../components/common/Card";
+import { InputComponent } from "../../components/common/Input";
 
-const shops = [
-  {
-    id: "1",
-    name: "Olivia",
-    shop: "Urban Cuts",
-    image: require("@/assets/images/icon.png"),
-    rating: "4.7",
-    service: "Beard",
-    price: "200 Rs",
-    experience: "5 Years",
-    distance: "2 KM",
-  },
-  {
-    id: "2",
-    name: "Sophia",
-    shop: "Style Studio",
-    image: require("@/assets/images/icon.png"),
-    rating: "4.8",
-    service: "Haircut",
-    price: "300 Rs",
-    experience: "7 Years",
-    distance: "1.5 KM",
-  },
+export default function StylishScreen() {
+  const shops = [
+    {
+      id: "1",
+      name: "Olivia",
+      shop: "Urban Cuts",
+      image: require("@/assets/images/icon.png"),
+      rating: "4.7",
+      service: "Beard",
+      price: "200 Rs",
+      experience: "5 Years",
+      distance: "2 KM",
+    },
+    {
+      id: "2",
+      name: "Sophia",
+      shop: "Style Studio",
+      image: require("@/assets/images/icon.png"),
+      rating: "4.8",
+      service: "Haircut",
+      price: "300 Rs",
+      experience: "7 Years",
+      distance: "1.5 KM",
+    },
 
-  {
-    id: "3",
-    name: "Sophia",
-    shop: "Style Studio",
-    image: require("@/assets/images/icon.png"),
-    rating: "4.8",
-    service: "Haircut",
-    price: "300 Rs",
-    experience: "7 Years",
-    distance: "1.5 KM",
-  },
-  {
-    id: "4",
-    name: "Sophia",
-    shop: "Style Studio",
-    image: require("@/assets/images/icon.png"),
-    rating: "4.8",
-    service: "Haircut",
-    price: "300 Rs",
-    experience: "7 Years",
-    distance: "1.5 KM",
-  },
-];
+    {
+      id: "3",
+      name: "Sophia",
+      shop: "Style Studio",
+      image: require("@/assets/images/icon.png"),
+      rating: "4.8",
+      service: "Haircut",
+      price: "300 Rs",
+      experience: "7 Years",
+      distance: "1.5 KM",
+    },
+    {
+      id: "4",
+      name: "Sophia",
+      shop: "Style Studio",
+      image: require("@/assets/images/icon.png"),
+      rating: "4.8",
+      service: "Haircut",
+      price: "300 Rs",
+      experience: "7 Years",
+      distance: "1.5 KM",
+    },
+  ];
 
-export default function Stylish({ title }: { title: string }) {
+  const [shopShown, setShopShown] = React.useState(true);
+
   return (
-    <View className="mt-5">
-      {/* Header */}
-      <View className="mt-6 flex-row items-center justify-between">
-        <Text className="text-[20px] font-bold text-black">{title} </Text>
+    <SafeAreaView className="flex-1 ">
+      <AppBar title="Stylish" />
 
-        <Pressable className="flex-row items-center">
-          <Text className="text-[16px] font-semibold text-black">See All</Text>
+      <InputComponent icon={Search} placeholderText="Search" />
 
-          <ChevronRight size={20} color="black" strokeWidth={2.5} />
-        </Pressable>
+      <View className="p-3">
+        <CategoriesComponent />
       </View>
 
-      {/* Shops */}
-
       <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        contentContainerClassName="gap-4"
+        showsVerticalScrollIndicator={false}
         className="mt-4 w-full"
+        contentContainerStyle={{
+          paddingHorizontal: 16,
+          paddingBottom: 300,
+          gap: 16,
+        }}
       >
         {shops.map((shop) => (
           <CardComponent
             // width="w-max-[360px]"
-            width="w-[360px]"
+            width="w-[400px]"
             key={shop.id}
             shop={shop}
             primaryButtonText="View Profile"
@@ -83,6 +87,6 @@ export default function Stylish({ title }: { title: string }) {
           />
         ))}
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 }

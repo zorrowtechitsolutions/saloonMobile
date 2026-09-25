@@ -14,7 +14,7 @@ import AboutScreen from "../../screen/user/About";
 import GalleryScreen from "../../screen/user/Gallery";
 import ReviewsScreen from "../../screen/user/Review";
 import ServicesScreen from "../../screen/user/Services";
-import Stylish from "../../screen/user/Stylish";
+import TopStylishScreen from "../../screen/user/TopStylish";
 import HeroCarousel from "../user/Carousel";
 import CategoriesComponent from "./Categories";
 
@@ -99,8 +99,8 @@ export function TabsComponent({
                 {showCard ? (
                   <>
                     <CategoriesComponent />
-                    <Stylish title="Top Stylish" />
-                    <Stylish title="Near by Stylish" />
+                    <TopStylishScreen title="Top Stylish" />
+                    <TopStylishScreen title="Near by Stylish" />
                   </>
                 ) : (
                   renderTabContent(value)
