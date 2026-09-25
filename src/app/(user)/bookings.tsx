@@ -1,3 +1,4 @@
+import { Search } from "lucide-react-native";
 import { ScrollView, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import CalendarComponent from "../components/common/Calendar";
@@ -58,7 +59,7 @@ export default function bookings() {
   return (
     <SafeAreaView className="flex-1 ">
       <HeaderComponent />
-      <InputComponent />
+      <InputComponent icon={Search} placeholderText="Search" />
 
       <View className="p-3 flex gap-3">
         <CalendarComponent />

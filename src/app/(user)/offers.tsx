@@ -1,3 +1,4 @@
+import { Search } from "lucide-react-native";
 import React from "react";
 import { SafeAreaView, ScrollView } from "react-native";
 import { CardComponent } from "../components/common/Card";
@@ -64,7 +65,7 @@ export default function offers() {
     <SafeAreaView className="flex-1 ">
       <HomeHeader />
 
-      <InputComponent />
+      <InputComponent icon={Search} placeholderText="Search" />
 
       <ScrollView
         showsVerticalScrollIndicator={false}

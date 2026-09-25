@@ -25,7 +25,7 @@ export default function AccordionComponent({ services }: any) {
             <AccordionTrigger>
               {({ isExpanded }: any) => (
                 <View className="flex-row items-center justify-between w-full">
-                  <AccordionTitleText className="text-[18px]">
+                  <AccordionTitleText className="text-[16px]">
                     {category.name}
                   </AccordionTitleText>
 
@@ -76,10 +76,9 @@ export default function AccordionComponent({ services }: any) {
               </View>
             ))}
           </AccordionContent>
+          <Divider className="bg-border" />
         </AccordionItem>
       ))}
-
-      <Divider className="bg-border" />
     </Accordion>
   );
 }

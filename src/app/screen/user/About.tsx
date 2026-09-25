@@ -1,4 +1,12 @@
-import { MapPin, Phone, Star } from "lucide-react-native";
+import {
+  Bike,
+  CreditCard,
+  MapPin,
+  Music2,
+  Phone,
+  Snowflake,
+  Star,
+} from "lucide-react-native";
 import {
   Dimensions,
   Linking,
@@ -59,6 +67,25 @@ const services = [
   },
 ];
 
+const amenities = [
+  {
+    title: "Air Conditioned",
+    icon: Snowflake,
+  },
+  {
+    title: "Online Payment",
+    icon: CreditCard,
+  },
+  {
+    title: "Bike Parking",
+    icon: Bike,
+  },
+  {
+    title: "Online Payment",
+    icon: Music2,
+  },
+];
+
 export default function AboutScreen() {
   const callShop = () => {
     Linking.openURL("tel:+91259104054");
@@ -81,13 +108,13 @@ export default function AboutScreen() {
         }}
       >
         {/* Shop Name */}
-        <Text className="text-[22px] font-semibold text-[#171717]">
+        <Text className="text-[18px] font-semibold text-[#171717]">
           Luxe Hair Studio
         </Text>
 
         {/* Rating */}
         <View className="mt-2 flex-row items-center">
-          <Star size={21} color="#E8C46D" fill="#E8C46D" strokeWidth={1.5} />
+          <Star size={20} color="#E8C46D" fill="#E8C46D" strokeWidth={1.5} />
 
           <Text className="ml-2 text-[16px] font-medium text-[#222222]">
             4.7
@@ -109,34 +136,56 @@ export default function AboutScreen() {
 
         {/* Opening Hours */}
         <View className="mt-7">
-          <Text className="text-[21px] font-semibold text-[#171717]">
+          <Text className="text-[18px] font-semibold text-[#171717]">
             Opening Hours
           </Text>
 
-          <Text className="mt-3 text-[20px] leading-[29px] text-[#686868]">
+          <Text className="mt-3 text-[16px] leading-[29px] text-[#686868]">
             Monday - Sunday : 9:00 AM{"\n"}
             9:00 PM
           </Text>
         </View>
 
+        <View className="mt-7">
+          <Text className="text-[17px] font-semibold text-gray-900 mb-4">
+            Amenities
+          </Text>
+
+          <View className="flex-row flex-wrap">
+            {amenities.map((item, index) => {
+              const Icon = item.icon;
+
+              return (
+                <View key={index} className="w-1/2 flex-row items-center mb-4">
+                  <Icon size={19} color="#333" strokeWidth={1.8} />
+
+                  <Text className="ml-3 text-[14px] text-gray-800">
+                    {item.title}
+                  </Text>
+                </View>
+              );
+            })}
+          </View>
+        </View>
+
         {/* Large spacing - same as screenshot */}
-        <View className="h-[205px]" />
+        <View className="mt-7" />
 
         {/* Location */}
         <View>
-          <Text className="text-[21px] font-semibold text-[#171717]">
+          <Text className="text-[16px] font-semibold text-[#171717]">
             Location
           </Text>
 
           <View className="mt-4 flex-row">
             <MapPin
-              size={23}
+              size={20}
               color="#555555"
               strokeWidth={1.8}
               style={{ marginTop: 2 }}
             />
 
-            <Text className="ml-4 flex-1 text-[20px] leading-[29px] text-[#4F4F4F]">
+            <Text className="ml-4 flex-1 text-[16px] leading-[29px] text-[#4F4F4F]">
               123 Fashion Avenue, Suite 200 Downtown{"\n"}
               District, NY 10001
             </Text>
@@ -145,14 +194,14 @@ export default function AboutScreen() {
 
         {/* Contact */}
         <View className="mt-7">
-          <Text className="text-[21px] font-semibold text-[#171717]">
+          <Text className="text-[18px] font-semibold text-[#171717]">
             Contact
           </Text>
 
           <Pressable onPress={callShop} className="mt-4 flex-row items-center">
-            <Phone size={25} color="#555555" strokeWidth={1.8} />
+            <Phone size={20} color="#555555" strokeWidth={1.8} />
 
-            <Text className="ml-4 text-[20px] text-[#222222]">
+            <Text className="ml-4 text-[16px] text-[#222222]">
               +91 259104054
             </Text>
           </Pressable>
@@ -160,11 +209,11 @@ export default function AboutScreen() {
 
         {/* About */}
         <View className="mt-7">
-          <Text className="text-[21px] font-semibold text-[#171717]">
+          <Text className="text-[18px] font-semibold text-[#171717]">
             About
           </Text>
 
-          <Text className="mt-4 text-[18px] leading-[29px] text-[#5F5F5F]">
+          <Text className="mt-4 text-[16px] leading-[29px] text-[#5F5F5F]">
             Welcome to Luxe Hair Studio, your premier destination for
             exceptional beauty services. We pride ourselves on delivering
             world-class treatments in a luxurious and relaxing environment. Our
@@ -175,11 +224,13 @@ export default function AboutScreen() {
 
         {/* Services */}
         <View className="mt-7">
-          <Text className="text-[21px] font-semibold text-[#171717]">
+          <Text className="text-[18px] font-semibold text-[#171717]">
             Services & Pricing
           </Text>
 
-          <AccordionComponent services={services} />
+          <View className="mt-4">
+            <AccordionComponent services={services} />
+          </View>
         </View>
       </ScrollView>
     </View>

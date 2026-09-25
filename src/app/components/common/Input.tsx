@@ -1,20 +1,56 @@
-import { SearchIcon } from "@/components/ui/icon";
 import { Input, InputField, InputIcon, InputSlot } from "@/components/ui/input";
-import { View } from "react-native";
+import { ChevronDown, ChevronUp } from "lucide-react-native";
+import { Pressable, View } from "react-native";
+import { useDrawer } from "../../../app/lib/context/global";
 
-export function InputComponent() {
+export function InputComponent({
+  icon,
+
+  placeholderText,
+  editable = true,
+  dropdown = false,
+}: {
+  icon: any;
+  placeholderText: string;
+  editable?: boolean;
+  dropdown?: boolean;
+}) {
+  const { openSheet, dropDownShow, setDropDownShow } = useDrawer();
   return (
     <View className="mx-3">
-      <Input className="h-14 w-full rounded-2xl border-2 bg-muted px-3 my-2">
+      <Input className="my-2 h-14 w-full rounded-2xl border-2 bg-muted px-3">
         <InputSlot className="pl-1">
-          <InputIcon as={SearchIcon} size="md" className=" text-black" />
+          <InputIcon as={icon} size="md" className="text-black" />
         </InputSlot>
 
         <InputField
-          placeholder="Search"
-          className="ml-2 text-base text-foreground"
+          placeholder={placeholderText}
+          className="ml-2 flex-1 text-base text-foreground"
           placeholderTextColor="#9CA3AF"
+          editable={editable}
         />
+
+        {dropdown && (
+          <InputSlot className="pr-1">
+            <Pressable
+              onPress={() => {
+                const nextValue = !dropDownShow;
+
+                setDropDownShow?.(nextValue);
+
+                if (nextValue) {
+                  openSheet();
+                }
+              }}
+            >
+              <InputIcon
+                as={dropDownShow ? ChevronUp : ChevronDown}
+                size="md"
+                className="text-black"
+              />
+            </Pressable>
+          </InputSlot>
+        )}
       </Input>
     </View>
   );

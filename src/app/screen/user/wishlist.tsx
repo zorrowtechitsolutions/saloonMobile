@@ -1,3 +1,4 @@
+import { Search } from "lucide-react-native";
 import { ScrollView, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import AppBar from "../../components/common/AppBar";
@@ -58,7 +59,7 @@ export default function WishlistScreen() {
     <SafeAreaView className="flex-1 ">
       <AppBar title="Favoraite" />
 
-      <InputComponent />
+      <InputComponent icon={Search} placeholderText="Search" />
 
       <View className="p-3">
         <SegmentedControlComponet segmented={["Stylish", "Shop"]} />

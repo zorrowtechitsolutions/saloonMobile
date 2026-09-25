@@ -1,3 +1,4 @@
+import { Search } from "lucide-react-native";
 import { SafeAreaView, ScrollView } from "react-native";
 import HomeHeader from "../components/common/Header";
 import { InputComponent } from "../components/common/Input";
@@ -14,7 +15,7 @@ export default function Index() {
         showsVerticalScrollIndicator={false}
       >
         <HomeHeader />
-        <InputComponent />
+        <InputComponent icon={Search} placeholderText="Search" />
         <TabsComponent
           tabs={["Men", "Women"]}
           showCarousel={true}

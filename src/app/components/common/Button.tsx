@@ -32,6 +32,9 @@ export default function ButtonComponent({
     if (buttonText == "Book Appointment") {
       router.push("/screen/user/services/selectServices");
     }
+    if (buttonText == "Continue") {
+      router.push("/screen/user/booking/selectDate");
+    }
   };
 
   return (

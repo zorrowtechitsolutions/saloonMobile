@@ -51,18 +51,20 @@ export default function ServicesScreen() {
       <AccountItemComponent
         title="Mens Grooming"
         subtitle="Start from $200"
-        onPress={() => router.push("/screen/user/Professional")}
+        onPress={() => router.push("/screen/user/services/selectServices")}
       />
       <View className="h-[1px] bg-gray-300" />
 
       <AccountItemComponent
         title="Mens Hair Colouring"
         subtitle="Start from $200"
+        onPress={() => router.push("/screen/user/services/selectServices")}
       />
       <View className="h-[1px] bg-gray-300" />
       <AccountItemComponent
         title="Mens Hair Colouring"
         subtitle="Start from $200"
+        onPress={() => router.push("/screen/user/services/selectServices")}
       />
       <View className="h-[1px] bg-gray-300" />
     </View>

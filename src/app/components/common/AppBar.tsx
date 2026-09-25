@@ -58,7 +58,7 @@ export default function AppBar({
         /* Search mode */
         <View className="flex-1 flex-row items-center gap-2">
           <View className="flex-1">
-            <InputComponent />
+            <InputComponent icon={Search} placeholderText="Search" />
           </View>
 
           <Pressable
