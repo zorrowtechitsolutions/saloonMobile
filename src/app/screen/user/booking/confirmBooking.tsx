@@ -29,7 +29,7 @@ export default function ConfirmBooking() {
                 source={{
                   uri: "https://images.unsplash.com/photo-1560066984-138dadb4c035",
                 }}
-                className="h-[74px] w-[74px] rounded-[12px]"
+                className="h-[64px] w-[64px] rounded-[12px]"
                 resizeMode="cover"
               />
 
