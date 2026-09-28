@@ -35,6 +35,9 @@ export default function ButtonComponent({
     if (buttonText == "Continue") {
       router.push("/screen/user/booking/selectDate");
     }
+    if (buttonText == "Confirm Booking") {
+      router.push("/screen/user/booking/confirmBooking");
+    }
   };
 
   return (
