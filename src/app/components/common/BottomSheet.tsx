@@ -3,13 +3,16 @@ import { Pressable, Text, View } from "react-native";
 
 import { Search, X } from "lucide-react-native";
 import { useDrawer } from "../../../app/lib/context/global";
+import CancellationScreen from "../../screen/user/booking/cancelBooking";
 import StylishList from "../../screen/user/booking/stylishList";
 import { InputComponent } from "./Input";
 
 export default function BottomSheetComponent({
   headingText,
+  bottomSheetView,
 }: {
   headingText: string;
+  bottomSheetView: string;
 }) {
   const { sheetRef, setDropDownShow } = useDrawer();
 
@@ -47,9 +50,16 @@ export default function BottomSheetComponent({
             </Pressable>
           </View>
 
-          <View className="mt-7 w-full h-full">
-            <InputComponent icon={Search} placeholderText="Search" />
-            <StylishList />
+          <View className="mt-7 h-full w-full">
+            {bottomSheetView === "Select Date" && (
+              <>
+                <InputComponent icon={Search} placeholderText="Search" />
+
+                <StylishList />
+              </>
+            )}
+
+            {bottomSheetView === "Cancel booking" && <CancellationScreen />}
           </View>
         </BottomSheetView>
       </BottomSheet>

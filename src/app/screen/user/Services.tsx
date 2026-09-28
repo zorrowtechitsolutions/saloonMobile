@@ -11,9 +11,9 @@ export default function ServicesScreen() {
         <View className=" m-auto  flex-row items-center">
           {/* Icon */}
           <View className="h-9 w-9 flex-row gap-2  items-center justify-center rounded-[10px] bg-[#F3F3F1]">
-            <Store size={14} color="#111111" strokeWidth={2} />
+            <Store size={16} color="#111111" strokeWidth={2} />
             {/* Name */}
-            <Text className=" w-[190px] text-[13px] font-medium text-[#202020]">
+            <Text className=" w-[190px] text-[16px] font-medium text-[#202020]">
               Urban Cuts
             </Text>
           </View>
@@ -28,8 +28,8 @@ export default function ServicesScreen() {
         <View className=" m-auto flex-row items-center">
           {/* Icon */}
           <View className="h-9 w-9 flex-row gap-2 items-center justify-center rounded-[10px] bg-[#F3F3F1]">
-            <Send size={14} color="#111111" strokeWidth={2} />
-            <Text className=" w-[190px] text-[13px] font-medium text-[#202020]">
+            <Send size={16} color="#111111" strokeWidth={2} />
+            <Text className=" w-[190px] text-[16px] font-medium text-[#202020]">
               Freelance
             </Text>
           </View>
@@ -44,7 +44,9 @@ export default function ServicesScreen() {
       </View>
 
       <View className="flex-row items-center gap-3">
-        <Text className="text-base font-semibold text-black">Services</Text>
+        <Text className="text-base text-[16px] font-semibold text-black">
+          Services
+        </Text>
 
         <View className="h-[1px] flex-1 bg-gray-300" />
       </View>

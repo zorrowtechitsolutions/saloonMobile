@@ -38,6 +38,16 @@ export default function ButtonComponent({
     if (buttonText == "Confirm Booking") {
       router.push("/screen/user/booking/confirmBooking");
     }
+
+    if (buttonText == "Book Now") {
+      router.push("/screen/user/booking/compleateBooking");
+    }
+    if (buttonText == "View Booking") {
+      router.push("/bookings");
+    }
+    if (buttonText == "Back to Home") {
+      router.push("/");
+    }
   };
 
   return (

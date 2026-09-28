@@ -23,7 +23,10 @@ export default function SelectDateAndStylish() {
           <CalendarComponent />
         </View>
 
-        <BottomSheetComponent headingText="Choose Professionals" />
+        <BottomSheetComponent
+          headingText="Choose Professionals"
+          bottomSheetView={"Select Date"}
+        />
 
         <View className="flex-row items-center justify-between p-4  w-full absolute bottom-0">
           {/* Left Side: Text Information */}
