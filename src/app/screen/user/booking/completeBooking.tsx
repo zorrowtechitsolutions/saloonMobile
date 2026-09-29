@@ -4,7 +4,7 @@ import { Pressable, ScrollView, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import ButtonComponent from "../../../components/common/Button";
 
-export default function CompleateBooking() {
+export default function CompleteBooking() {
   return (
     <SafeAreaView className="flex-1 bg-[#FFFCF8]">
       <View className="relative h-full w-full">

@@ -40,7 +40,7 @@ export default function ButtonComponent({
     }
 
     if (buttonText == "Book Now") {
-      router.push("/screen/user/booking/compleateBooking");
+      router.push("/screen/user/booking/completeBooking");
     }
     if (buttonText == "View Booking") {
       router.push("/bookings");

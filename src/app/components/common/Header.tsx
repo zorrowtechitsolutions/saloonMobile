@@ -1,3 +1,4 @@
+import { router } from "expo-router";
 import { Bell, ChevronDown, MapPin } from "lucide-react-native";
 import { Pressable, Text, View } from "react-native";
 
@@ -8,7 +9,7 @@ export default function HeaderComponent() {
       <Pressable
         className="flex-row items-center"
         onPress={() => {
-          console.log("Location pressed");
+          router.push("/screen/user/LocationSearch");
         }}
       >
         {/* Location Icon */}
