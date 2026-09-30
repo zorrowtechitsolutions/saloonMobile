@@ -1,4 +1,4 @@
-import { Clock3, Heart, MapPin, Star } from "lucide-react-native";
+import { Clock3, Heart, LucideIcon, MapPin, Star } from "lucide-react-native";
 import { Image, Pressable, Text, View } from "react-native";
 import ButtonBox from "../user/Buttonbox";
 
@@ -11,6 +11,7 @@ export function CardComponent({
   primaryButtonText,
   secondaryButtonText,
   offerShown,
+  icon,
 }: {
   shop: any;
   shopShown?: boolean;
@@ -18,6 +19,7 @@ export function CardComponent({
   secondaryButtonText?: string;
   offerShown?: boolean;
   width?: string;
+  icon?: LucideIcon;
 }) {
   return (
     <View
@@ -161,6 +163,7 @@ export function CardComponent({
           offerShown={offerShown}
           shopName={shop.name}
           shopDistance={shop.distance}
+          icon={icon}
         />
       </View>
     </View>

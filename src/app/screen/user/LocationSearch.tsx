@@ -97,6 +97,37 @@ export default function LocationSearchScreen() {
           gap: 16,
         }}
       >
+        <View className="mt-6 ">
+          {/* Title */}
+          <Text className="mb-4 text-[16px] font-medium text-gray-700">
+            Popular Cities
+          </Text>
+
+          {/* Single Card */}
+          <View className="overflow-hidden rounded-2xl border border-gray-200 bg-white">
+            {recentLocations.map((location, index) => (
+              <Pressable
+                key={location.name}
+                onPress={() => {
+                  console.log("Selected:", location.name);
+                }}
+                className={`h-[55px] flex-row items-center px-4 active:bg-gray-50 ${
+                  index !== recentLocations.length - 1
+                    ? "border-b border-gray-100"
+                    : ""
+                }`}
+              >
+                {/* Clock Icon */}
+
+                {/* Location Name */}
+                <Text className="ml-4 flex-1 text-[16px] font-medium text-gray-900">
+                  {location.name}
+                </Text>
+              </Pressable>
+            ))}
+          </View>
+        </View>
+
         <View className="flex-1   pt-1">
           {/* Current Location */}
 

@@ -201,7 +201,7 @@ export default function ConfirmBooking() {
 
           {/* Right Side: Add Button */}
           <ButtonComponent
-            buttonText="Book Now"
+            buttonText="Confirm Appointment"
             textColor="text-white"
             bgColor="bg-black"
             boder="border-black"

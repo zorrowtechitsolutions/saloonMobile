@@ -8,10 +8,12 @@ import {
 } from "@/components/ui/accordion";
 
 import { Divider } from "@/components/ui/divider";
-import { ChevronDown, Plus } from "lucide-react-native";
+import { Check, ChevronDown } from "lucide-react-native";
+import { useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 
 export default function AccordionComponent({ services }: any) {
+  const [checked, setChecked] = useState(false);
   return (
     <Accordion
       type="single"
@@ -45,8 +47,11 @@ export default function AccordionComponent({ services }: any) {
                   <Text className="text-[18px] font-medium text-black">
                     {service.name}
                   </Text>
+                  <Text className="text-[16px] font-medium text-black">
+                    {service?.sub}
+                  </Text>
 
-                  {service.time && (
+                  {service.time && service.price && (
                     <>
                       <Text className="text-[13px] text-gray-400 mt-1">
                         {service.time}
@@ -59,18 +64,41 @@ export default function AccordionComponent({ services }: any) {
                   )}
                 </View>
 
-                {!service.time && (
+                {!service.time && service?.price && (
                   <Text className="text-[13px] text-gray-500 mt-1">
-                    Price ₹{service.price}
+                    Price ₹{service?.price}
                   </Text>
                 )}
 
-                {service.time && (
+                {category?.sub && (
                   <TouchableOpacity
                     activeOpacity={0.7}
-                    className="w-10 h-10 border border-gray-400 rounded-xl items-center justify-center"
+                    onPress={() => setChecked(!checked)}
+                    className={`w-6 h-6 rounded-md border items-center justify-center ${
+                      checked
+                        ? "bg-black border-black"
+                        : "bg-white border-gray-400"
+                    }`}
                   >
-                    <Plus size={18} color="#6B7280" strokeWidth={1.5} />
+                    {checked && (
+                      <Check size={15} color="#fff" strokeWidth={3} />
+                    )}
+                  </TouchableOpacity>
+                )}
+
+                {service?.time && (
+                  <TouchableOpacity
+                    activeOpacity={0.7}
+                    onPress={() => setChecked(!checked)}
+                    className={`w-6 h-6 rounded-md border items-center justify-center ${
+                      checked
+                        ? "bg-black border-black"
+                        : "bg-white border-gray-400"
+                    }`}
+                  >
+                    {checked && (
+                      <Check size={15} color="#fff" strokeWidth={3} />
+                    )}
                   </TouchableOpacity>
                 )}
               </View>

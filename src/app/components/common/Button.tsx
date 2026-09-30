@@ -1,4 +1,5 @@
 import { router } from "expo-router";
+import { LucideIcon } from "lucide-react-native";
 import { Pressable, Text } from "react-native";
 
 export default function ButtonComponent({
@@ -13,7 +14,7 @@ export default function ButtonComponent({
   textColor?: string;
   bgColor?: string;
   boder?: string;
-  icon?: any;
+  icon?: LucideIcon;
   height: string;
 }) {
   const handleButton = () => {
@@ -40,6 +41,10 @@ export default function ButtonComponent({
     }
 
     if (buttonText == "Book Now") {
+      router.push("/screen/user/services/selectServices");
+    }
+
+    if (buttonText == "Confirm Appointment") {
       router.push("/screen/user/booking/completeBooking");
     }
     if (buttonText == "View Booking") {
@@ -47,6 +52,9 @@ export default function ButtonComponent({
     }
     if (buttonText == "Back to Home") {
       router.push("/");
+    }
+    if (buttonText == "View Details") {
+      router.push("/screen/user/booking/bookingDetails");
     }
   };
 

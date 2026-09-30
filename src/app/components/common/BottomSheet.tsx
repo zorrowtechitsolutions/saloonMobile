@@ -5,6 +5,7 @@ import { Search, X } from "lucide-react-native";
 import { useDrawer } from "../../../app/lib/context/global";
 import CancellationScreen from "../../screen/user/booking/cancelBooking";
 import StylishList from "../../screen/user/booking/stylishList";
+import FilterComponent from "./Filter";
 import { InputComponent } from "./Input";
 
 export default function BottomSheetComponent({
@@ -60,6 +61,7 @@ export default function BottomSheetComponent({
             )}
 
             {bottomSheetView === "Cancel booking" && <CancellationScreen />}
+            {bottomSheetView === "Filter" && <FilterComponent />}
           </View>
         </BottomSheetView>
       </BottomSheet>

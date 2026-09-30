@@ -33,7 +33,7 @@ export default function HeaderComponent() {
       <Pressable
         className="h-12 w-12 items-center justify-center rounded-full bg-[#F7F7F7]"
         onPress={() => {
-          console.log("Notification pressed");
+          router.push("/screen/user/Notification");
         }}
       >
         <Bell size={27} color="#111111" strokeWidth={2.1} />

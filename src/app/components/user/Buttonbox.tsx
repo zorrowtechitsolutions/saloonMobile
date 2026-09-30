@@ -1,4 +1,4 @@
-import { MapPin } from "lucide-react-native";
+import { LucideIcon, MapPin } from "lucide-react-native";
 import { Text, View } from "react-native";
 import ButtonComponent from "../common/Button";
 
@@ -8,12 +8,14 @@ export default function ButtonBox({
   secondaryButtonText,
   shopName,
   shopDistance,
+  icon,
 }: {
   primaryButtonText?: string;
   secondaryButtonText?: string;
   offerShown?: boolean;
   shopName?: string;
   shopDistance?: string;
+  icon?: LucideIcon;
 }) {
   return (
     <View className="mt-4 flex-row gap-2">
@@ -47,6 +49,7 @@ export default function ButtonBox({
         textColor="text-white"
         bgColor="bg-black"
         height="h-12"
+        icon={icon}
       />
     </View>
   );

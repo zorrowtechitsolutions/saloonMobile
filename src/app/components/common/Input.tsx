@@ -1,23 +1,24 @@
 import { Input, InputField, InputIcon, InputSlot } from "@/components/ui/input";
-import { ChevronDown, ChevronUp } from "lucide-react-native";
+import { ChevronDown, ChevronUp, LucideIcon } from "lucide-react-native";
 import { Pressable, View } from "react-native";
 import { useDrawer } from "../../../app/lib/context/global";
 
 export function InputComponent({
   icon,
-
   placeholderText,
   editable = true,
   dropdown = false,
+  flex,
 }: {
-  icon: any;
+  icon: LucideIcon;
   placeholderText: string;
   editable?: boolean;
   dropdown?: boolean;
+  flex?: string;
 }) {
   const { openSheet, dropDownShow, setDropDownShow } = useDrawer();
   return (
-    <View className="mx-3">
+    <View className={`mx-3 ${flex} `}>
       <Input className="my-2 h-14 w-full rounded-2xl border-2 bg-muted px-3">
         <InputSlot className="pl-1">
           <InputIcon as={icon} size="md" className="text-black" />

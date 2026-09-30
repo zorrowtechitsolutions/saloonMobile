@@ -1,6 +1,6 @@
-import { Search } from "lucide-react-native";
+import { Search, SlidersHorizontal } from "lucide-react-native";
 import React from "react";
-import { SafeAreaView, ScrollView, View } from "react-native";
+import { Pressable, SafeAreaView, ScrollView, View } from "react-native";
 import CategoriesComponent from "../../../app/components/common/Categories";
 import AppBar from "../../components/common/AppBar";
 import { CardComponent } from "../../components/common/Card";
@@ -61,7 +61,13 @@ export default function StylishScreen() {
     <SafeAreaView className="flex-1 ">
       <AppBar title="Stylish" />
 
-      <InputComponent icon={Search} placeholderText="Search" />
+      <View className="flex-row w-full items-center gap-3 justify-center">
+        <InputComponent icon={Search} placeholderText="Search" flex="flex-1" />
+
+        <Pressable className="w-10 h-10 items-center justify-center">
+          <SlidersHorizontal size={27} color="#222" />
+        </Pressable>
+      </View>
 
       <View className="p-3">
         <CategoriesComponent />

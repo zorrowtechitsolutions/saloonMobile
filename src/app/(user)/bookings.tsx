@@ -1,4 +1,4 @@
-import { Search } from "lucide-react-native";
+import { CalendarFold, Search } from "lucide-react-native";
 import { ScrollView, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import CalendarComponent from "../components/common/Calendar";
@@ -63,6 +63,7 @@ export default function bookings() {
 
       <View className="p-3 flex gap-3">
         <CalendarComponent />
+
         <SegmentedControlComponet
           segmented={["Upcoming", "Past", "Cancelled"]}
         />
@@ -80,8 +81,9 @@ export default function bookings() {
           <CardComponent
             key={shop.id}
             shop={shop}
-            primaryButtonText="View Profile"
-            secondaryButtonText="Book Now"
+            primaryButtonText="View Details"
+            secondaryButtonText="Reshcedule"
+            icon={CalendarFold}
           />
         ))}
       </ScrollView>
