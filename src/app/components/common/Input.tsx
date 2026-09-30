@@ -17,42 +17,59 @@ export function InputComponent({
   flex?: string;
 }) {
   const { openSheet, dropDownShow, setDropDownShow } = useDrawer();
+
+  const handleDropdownPress = () => {
+    const nextValue = !dropDownShow;
+
+    setDropDownShow?.(nextValue);
+
+    if (nextValue) {
+      openSheet();
+    }
+  };
+
   return (
-    <View className={`mx-3 ${flex} `}>
-      <Input className="my-2 h-14 w-full rounded-2xl border-2 bg-muted px-3">
-        <InputSlot className="pl-1">
-          <InputIcon as={icon} size="md" className="text-black" />
-        </InputSlot>
+    <View className={`mx-3 ${flex ?? ""}`}>
+      {dropdown ? (
+        <Pressable onPress={handleDropdownPress}>
+          <Input
+            pointerEvents="none"
+            className="my-2 h-14 w-full rounded-2xl border-2 bg-muted px-3"
+          >
+            <InputSlot className="pl-1">
+              <InputIcon as={icon} size="md" className="text-black" />
+            </InputSlot>
 
-        <InputField
-          placeholder={placeholderText}
-          className="ml-2 flex-1 text-base text-foreground"
-          placeholderTextColor="#9CA3AF"
-          editable={editable}
-        />
+            <InputField
+              placeholder={placeholderText}
+              className="ml-2 flex-1 text-base text-foreground"
+              placeholderTextColor="#9CA3AF"
+              editable={false}
+            />
 
-        {dropdown && (
-          <InputSlot className="pr-1">
-            <Pressable
-              onPress={() => {
-                const nextValue = !dropDownShow;
-
-                setDropDownShow?.(nextValue);
-
-                if (nextValue) {
-                  openSheet();
-                }
-              }}
-            >
+            <InputSlot className="pr-1">
               <InputIcon
                 as={dropDownShow ? ChevronUp : ChevronDown}
                 size="md"
                 className="text-black"
               />
-            </Pressable>
+            </InputSlot>
+          </Input>
+        </Pressable>
+      ) : (
+        <Input className="my-2 h-14 w-full rounded-2xl border-2 bg-muted px-3">
+          <InputSlot className="pl-1">
+            <InputIcon as={icon} size="md" className="text-black" />
           </InputSlot>
-        )}
-      </Input>
+
+          <InputField
+            placeholder={placeholderText}
+            className="ml-2 flex-1 text-base text-foreground"
+            placeholderTextColor="#9CA3AF"
+            editable={editable}
+          />
+        </Input>
+      )}
     </View>
   );
 }

@@ -8,14 +8,16 @@ export default function ButtonComponent({
   bgColor,
   boder,
   icon: IconComponent,
+  iconColor,
   height,
 }: {
   buttonText?: string;
   textColor?: string;
   bgColor?: string;
-  boder?: string;
+  boder?: string | null;
   icon?: LucideIcon;
   height: string;
+  iconColor?: string;
 }) {
   const handleButton = () => {
     if (buttonText == "View Shop") {
@@ -63,12 +65,7 @@ export default function ButtonComponent({
       className={`${height} flex-1 flex-row items-center justify-center rounded-[10px] border ${boder} ${bgColor}`}
       onPress={() => handleButton()}
     >
-      {IconComponent && (
-        <IconComponent
-          size={16}
-          color={textColor === "text-white" ? "white" : "black"}
-        />
-      )}
+      {IconComponent && <IconComponent size={16} color={iconColor} />}
 
       <Text className={`ml-2 text-[17px] font-semibold ${textColor}`}>
         {buttonText}

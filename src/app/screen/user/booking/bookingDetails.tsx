@@ -25,8 +25,8 @@ export default function BookingDetails() {
                 </Text>
               </View>
 
-              <Text className="ml-3 text-[12px] font-semibold #FFC000 border-none py-2  px-3 rounded-full bg-[#FFC000] text-black">
-                Pending
+              <Text className="ml-3 text-[12px] font-semibold #FFC000 border-none py-2  px-3 rounded-full bg-[#FFC000] text-yellow-700">
+                • Pending
               </Text>
             </View>
           </View>

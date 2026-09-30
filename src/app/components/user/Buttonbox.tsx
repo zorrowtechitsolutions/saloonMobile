@@ -9,6 +9,7 @@ export default function ButtonBox({
   shopName,
   shopDistance,
   icon,
+  shopStatus,
 }: {
   primaryButtonText?: string;
   secondaryButtonText?: string;
@@ -16,6 +17,7 @@ export default function ButtonBox({
   shopName?: string;
   shopDistance?: string;
   icon?: LucideIcon;
+  shopStatus?: string;
 }) {
   return (
     <View className="mt-4 flex-row gap-2">
@@ -27,7 +29,7 @@ export default function ButtonBox({
             </Text>
           </View>
 
-          <View className="flex-row items-center rounded-md bg-gray-100 px-2 py-1">
+          <View className="flex-row  items-center border-red-200 rounded-md bg-gray-100 px-2 py-1">
             <MapPin size={13} color="#777" />
 
             <Text className="ml-1 text-[12px] text-gray-600">
@@ -46,10 +48,12 @@ export default function ButtonBox({
 
       <ButtonComponent
         buttonText={secondaryButtonText}
-        textColor="text-white"
-        bgColor="bg-black"
+        textColor={shopStatus == "pending" ? "text-red-500" : "text-white"}
+        bgColor={shopStatus == "pending" ? "bg-red-200" : "bg-black"}
         height="h-12"
         icon={icon}
+        iconColor={shopStatus == "pending" ? "red" : "black"}
+        boder={shopStatus == "pending" ? "border-red-400" : null}
       />
     </View>
   );

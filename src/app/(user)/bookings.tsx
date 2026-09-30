@@ -1,69 +1,74 @@
-import { CalendarFold, Search } from "lucide-react-native";
-import { ScrollView, View } from "react-native";
+import { CalendarFold, Search, SlidersHorizontal } from "lucide-react-native";
+import { Pressable, ScrollView, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import CalendarComponent from "../components/common/Calendar";
+import BottomSheetComponent from "../components/common/BottomSheet";
 import { CardComponent } from "../components/common/Card";
 import HeaderComponent from "../components/common/Header";
 import { InputComponent } from "../components/common/Input";
 import SegmentedControlComponet from "../components/common/SegmentedControl";
+import { useDrawer } from "../lib/context/global";
 
-const shops = [
+const bookingsData = [
   {
     id: "1",
     name: "Olivia",
-    shop: "Urban Cuts",
+    shop: "Urban Cuts, Panballi nagar, Kochi",
     image: require("@/assets/images/icon.png"),
-    rating: "4.7",
-    service: "Beard",
+    service: "Beard & Hircut",
     price: "200 Rs",
-    experience: "5 Years",
-    distance: "2 KM",
+    time: "Today, 19, Aug, 02:30pm (45 mins)",
+    status: "canceled",
   },
   {
     id: "2",
     name: "Sophia",
-    shop: "Style Studio",
+    shop: "Style Studio, Panballi nagar, Kochi",
     image: require("@/assets/images/icon.png"),
-    rating: "4.8",
-    service: "Haircut",
-    price: "300 Rs",
-    experience: "7 Years",
-    distance: "1.5 KM",
+    service: "Beard & Hircut",
+    price: "200 Rs",
+    time: "Today, 19, Aug, 02:30pm (45 mins)",
+    status: "canceled",
   },
 
   {
     id: "3",
     name: "Sophia",
-    shop: "Style Studio",
+    shop: "Style Studio, Panballi nagar, Kochi",
     image: require("@/assets/images/icon.png"),
-    rating: "4.8",
-    service: "Haircut",
-    price: "300 Rs",
-    experience: "7 Years",
-    distance: "1.5 KM",
+    service: "Beard & Hircut",
+    price: "200 Rs",
+    time: "Today, 19, Aug, 02:30pm (45 mins)",
+    status: "confirmed",
   },
   {
     id: "4",
     name: "Sophia",
-    shop: "Style Studio",
+    shop: "Style Studio, Panballi nagar, Kochi",
     image: require("@/assets/images/icon.png"),
-    rating: "4.8",
-    service: "Haircut",
-    price: "300 Rs",
-    experience: "7 Years",
-    distance: "1.5 KM",
+    service: "Beard & Hircut",
+    price: "200 Rs",
+    time: "Today, 19, Aug, 02:30pm (45 mins)",
+    status: "pending",
   },
 ];
 
 export default function bookings() {
+  const { openSheet } = useDrawer();
   return (
     <SafeAreaView className="flex-1 ">
       <HeaderComponent />
-      <InputComponent icon={Search} placeholderText="Search" />
+      <View className="flex-row w-full items-center gap-3 justify-center">
+        <InputComponent icon={Search} placeholderText="Search" flex="flex-1" />
+
+        <Pressable
+          className="w-10 h-10 items-center justify-center"
+          onPress={() => openSheet()}
+        >
+          <SlidersHorizontal size={27} color="#222" />
+        </Pressable>
+      </View>
 
       <View className="p-3 flex gap-3">
-        <CalendarComponent />
-
         <SegmentedControlComponet
           segmented={["Upcoming", "Past", "Cancelled"]}
         />
@@ -77,15 +82,20 @@ export default function bookings() {
           paddingBottom: 600,
         }}
       >
-        {shops.map((shop) => (
+        {bookingsData.map((booking) => (
           <CardComponent
-            key={shop.id}
-            shop={shop}
+            key={booking.id}
+            shop={booking}
             primaryButtonText="View Details"
             secondaryButtonText="Reshcedule"
             icon={CalendarFold}
+            booking={true}
           />
         ))}
+        <BottomSheetComponent
+          headingText="Select Date"
+          bottomSheetView={"Filter Calendar"}
+        />
       </ScrollView>
     </SafeAreaView>
   );
