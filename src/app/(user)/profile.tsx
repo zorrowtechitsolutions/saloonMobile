@@ -109,6 +109,9 @@ export default function Profile() {
             icon={<Store size={19} color="#111" strokeWidth={1.5} />}
             title="Create a Shop"
             subtitle="List your salon, and manage booking staff & services"
+            onPress={() =>
+              router.push("/screen/admin/shop/registration/createShop")
+            }
           />
         </SectionComponet>
 

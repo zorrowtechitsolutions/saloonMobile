@@ -10,7 +10,7 @@ export function InputComponent({
   dropdown = false,
   flex,
 }: {
-  icon: LucideIcon;
+  icon?: LucideIcon;
   placeholderText: string;
   editable?: boolean;
   dropdown?: boolean;
