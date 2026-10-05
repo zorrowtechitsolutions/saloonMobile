@@ -58,6 +58,17 @@ export default function ButtonComponent({
     if (buttonText == "View Details") {
       router.push("/screen/user/booking/bookingDetails");
     }
+
+    if (buttonText == "Subscribe") {
+      router.push("/screen/admin/subscription/payment");
+    }
+
+    if (buttonText == "Continue With Google Pay") {
+      router.push("/screen/admin/shop/registration/compleated");
+    }
+    if (buttonText == "Cancel") {
+      router.back();
+    }
   };
 
   return (

@@ -24,7 +24,7 @@ export default function CreateShopScreen() {
   const handleNext = () => {
     if (isLastStep) {
       // Submit completed registration
-      router.replace("/screen/admin/shop/registration/compleated"); // change this to your required page
+      router.replace("/screen/admin/subscription/subscription"); // change this to your required page
       return;
     }
 
