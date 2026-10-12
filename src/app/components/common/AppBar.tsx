@@ -1,5 +1,5 @@
 import { router } from "expo-router";
-import { ChevronLeft, Search, X } from "lucide-react-native";
+import { ChevronLeft, EllipsisVertical, Search, X } from "lucide-react-native";
 import { useState } from "react";
 import { Pressable, Text, View } from "react-native";
 import { InputComponent } from "./Input";
@@ -9,6 +9,7 @@ interface AppBarProps {
   showBack?: boolean;
   rightComponent?: React.ReactNode;
   searchShow?: boolean;
+  threeDot?: boolean;
 }
 
 export default function AppBar({
@@ -16,6 +17,7 @@ export default function AppBar({
   showBack = true,
   rightComponent,
   searchShow = false,
+  threeDot = false,
 }: AppBarProps) {
   const [openSearchBox, setOpenSearchBox] = useState(false);
 
@@ -42,6 +44,15 @@ export default function AppBar({
 
           {/* Right */}
           <View className="ml-auto flex-row items-center gap-2">
+            {threeDot && (
+              <Pressable
+                onPress={() => router.back()}
+                className="h-10 w-10 items-center justify-center rounded-full"
+              >
+                <EllipsisVertical size={28} color="#111827" strokeWidth={2.2} />
+              </Pressable>
+            )}
+
             {rightComponent}
 
             {searchShow && (

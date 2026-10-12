@@ -1,3 +1,4 @@
+import { router } from "expo-router";
 import {
   Briefcase,
   Calendar,
@@ -246,7 +247,12 @@ export default function Index(): React.JSX.Element {
             <Text style={styles.reviewCount}>124 Reviews</Text>
           </View>
         </View>
-        <TouchableOpacity style={styles.profileButton}>
+        <TouchableOpacity
+          style={styles.profileButton}
+          onPress={() =>
+            router.push("/screen/admin/shop/profile/profileDetails")
+          }
+        >
           <User size={20} color={COLORS.textPrimary} />
         </TouchableOpacity>
       </View>
