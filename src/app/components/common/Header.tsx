@@ -2,32 +2,50 @@ import { router } from "expo-router";
 import { Bell, ChevronDown, MapPin } from "lucide-react-native";
 import { Pressable, Text, View } from "react-native";
 
-export default function HeaderComponent() {
+export default function HeaderComponent({
+  showLocation,
+}: {
+  showLocation?: boolean;
+}) {
   return (
     <View className="w-full flex-row items-center justify-between  px-5 py-4 mt-5">
       {/* Location */}
-      <Pressable
-        className="flex-row items-center"
-        onPress={() => {
-          router.push("/screen/user/LocationSearch");
-        }}
-      >
-        {/* Location Icon */}
-        <MapPin size={29} color="#111111" strokeWidth={2.3} />
+      {showLocation ? (
+        <Pressable
+          className="flex-row items-center"
+          onPress={() => {
+            router.push("/screen/user/LocationSearch");
+          }}
+        >
+          {/* Location Icon */}
+          <MapPin size={29} color="#111111" strokeWidth={2.3} />
 
-        {/* Location Text */}
-        <Text className="ml-3 text-[20px] font-semibold text-black">
-          Kochi, Kerala
-        </Text>
+          {/* Location Text */}
+          <Text className="ml-3 text-[20px] font-semibold text-black">
+            Kochi, Kerala
+          </Text>
 
-        {/* Dropdown */}
-        <ChevronDown
-          size={25}
-          color="#111111"
-          strokeWidth={2.8}
-          className="ml-2"
-        />
-      </Pressable>
+          {/* Dropdown */}
+          <ChevronDown
+            size={25}
+            color="#111111"
+            strokeWidth={2.8}
+            className="ml-2"
+          />
+        </Pressable>
+      ) : (
+        <Pressable
+          className="flex-row items-center"
+          onPress={() => {
+            router.push("/screen/user/LocationSearch");
+          }}
+        >
+          {/* Location Text */}
+          <Text className="ml-3 text-[20px] font-semibold text-black">
+            Dasboard
+          </Text>
+        </Pressable>
+      )}
 
       {/* Notification */}
       <Pressable

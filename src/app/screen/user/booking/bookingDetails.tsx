@@ -12,7 +12,7 @@ export default function BookingDetails() {
           className="flex-1"
           contentContainerStyle={{
             paddingTop: 10,
-            paddingBottom: 100,
+            paddingBottom: 150,
           }}
           showsVerticalScrollIndicator={false}
         >

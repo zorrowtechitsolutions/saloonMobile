@@ -14,31 +14,22 @@ export default function TabLayout() {
     >
       <NativeTabs.Trigger name="index">
         <NativeTabs.Trigger.Label hidden />
-        <NativeTabs.Trigger.Icon
-          src={require("../../../assets/images/icons/house.png")}
-        />
+        <NativeTabs.Trigger.Icon sf="house" md="home" />
       </NativeTabs.Trigger>
 
       <NativeTabs.Trigger name="shops">
         <NativeTabs.Trigger.Label hidden />
-
-        <NativeTabs.Trigger.Icon
-          src={require("../../../assets/images/icons/store.png")}
-        />
+        <NativeTabs.Trigger.Icon sf="storefront" md="store" />
       </NativeTabs.Trigger>
 
       <NativeTabs.Trigger name="offers">
         <NativeTabs.Trigger.Label hidden />
-        <NativeTabs.Trigger.Icon
-          src={require("../../../assets/images/icons/badge-percent.png")}
-        />
+        <NativeTabs.Trigger.Icon sf="tag" md="local_offer" />
       </NativeTabs.Trigger>
 
       <NativeTabs.Trigger name="bookings">
         <NativeTabs.Trigger.Label hidden />
-        <NativeTabs.Trigger.Icon
-          src={require("../../../assets/images/icons/calendar.png")}
-        />
+        <NativeTabs.Trigger.Icon sf="calendar" md="calendar_today" />
       </NativeTabs.Trigger>
 
       <NativeTabs.Trigger name="profile">

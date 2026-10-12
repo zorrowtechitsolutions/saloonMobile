@@ -37,7 +37,7 @@ export default function Profile() {
         contentContainerStyle={{
           paddingHorizontal: 16,
           paddingTop: 38,
-          paddingBottom: 80,
+          paddingBottom: 100,
           flexGrow: 1,
         }}
       >
@@ -190,7 +190,13 @@ export default function Profile() {
         </SectionComponet>
 
         {/* Logout */}
-        <View className="mt-4 mb-6">
+        <View
+          style={{
+            marginTop: 16,
+            marginBottom: 24,
+            minHeight: 48,
+          }}
+        >
           <ButtonComponent
             buttonText="Log Out"
             textColor="text-[#C96D67]"

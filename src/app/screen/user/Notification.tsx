@@ -1,16 +1,29 @@
+// app/notifications.tsx  (or wherever your screen lives)
 import { router } from "expo-router";
 import { Bell, Check, CheckCheck, Trash2, X } from "lucide-react-native";
+import React from "react";
 import {
-    Platform,
-    ScrollView,
-    StatusBar,
-    Text,
-    TouchableOpacity,
-    View,
+  ScrollView,
+  StatusBar,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-// 1. Define the Data
-const notificationsData = [
+// ---------- TYPES ----------
+type NotificationItem = {
+  id: number;
+  title: string;
+  message: string;
+  timeLabel?: string;
+  timeAgo: string;
+  isUnread: boolean;
+};
+
+// ---------- DATA ----------
+const notificationsData: NotificationItem[] = [
   {
     id: 1,
     title: "Booking Confirmed",
@@ -21,7 +34,7 @@ const notificationsData = [
   },
   {
     id: 2,
-    title: "Hey Sfwan , What are you waiting for?",
+    title: "Hey Sfwan, what are you waiting for?",
     message:
       "Your appointment at Natural Unisex Salon & Spa is pending to be confirmed 🎉",
     timeAgo: "8 days ago",
@@ -43,94 +56,116 @@ const notificationsData = [
   },
 ];
 
+// ---------- SCREEN ----------
 export default function NotificationsScreen() {
+  const [items, setItems] =
+    React.useState<NotificationItem[]>(notificationsData);
+
+  const handleDeleteAll = () => setItems([]);
+
+  const handleMarkAllRead = () =>
+    setItems((prev) => prev.map((n) => ({ ...n, isUnread: false })));
+
+  const handleToggleRead = (id: number) =>
+    setItems((prev) =>
+      prev.map((n) => (n.id === id ? { ...n, isUnread: !n.isUnread } : n)),
+    );
+
+  const handleDelete = (id: number) =>
+    setItems((prev) => prev.filter((n) => n.id !== id));
+
   return (
-    // Use a standard View with flex-1 to take up the whole screen
-    <View
-      className="flex-1 bg-white"
-      style={{
-        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 50,
-      }}
-    >
+    <SafeAreaView style={styles.safe} edges={["top", "left", "right"]}>
       <StatusBar barStyle="dark-content" backgroundColor="#ffffff" />
 
-      {/* --- HEADER --- */}
-      <View className="flex-row items-center justify-between px-5 py-4 border-b border-gray-100">
-        <Text className="text-2xl font-bold text-black">Notifications</Text>
+      {/* HEADER */}
+      <View style={styles.header}>
+        <Text style={styles.headerTitle}>Notifications</Text>
 
-        <View className="flex-row items-center gap-4">
-          <TouchableOpacity className="flex-row items-center gap-1">
-            <Trash2 size={18} color="#ef4444" />
-            <Text className="text-red-500 font-medium text-sm">Delete All</Text>
+        <View style={styles.headerActions}>
+          <TouchableOpacity
+            style={styles.actionBtn}
+            onPress={handleDeleteAll}
+            hitSlop={10}
+          >
+            <Trash2 size={16} color="#ef4444" />
+            <Text style={[styles.actionText, { color: "#ef4444" }]}>
+              Delete All
+            </Text>
           </TouchableOpacity>
 
-          <TouchableOpacity className="flex-row items-center gap-1">
-            <CheckCheck size={18} color="#3b82f6" />
-            <Text className="text-blue-500 font-medium text-sm">Read All</Text>
+          <TouchableOpacity
+            style={styles.actionBtn}
+            onPress={handleMarkAllRead}
+            hitSlop={10}
+          >
+            <CheckCheck size={16} color="#3b82f6" />
+            <Text style={[styles.actionText, { color: "#3b82f6" }]}>
+              Read All
+            </Text>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => router.back()}>
-            <X size={24} color="#000000" />
+          <TouchableOpacity onPress={() => router.back()} hitSlop={10}>
+            <X size={22} color="#000" />
           </TouchableOpacity>
         </View>
       </View>
 
-      {/* --- LIST --- */}
-      {/* We add style={{ flex: 1 }} to guarantee it takes remaining space */}
+      {/* LIST */}
       <ScrollView
-        style={{ flex: 1 }}
-        contentContainerStyle={{ paddingBottom: 20 }}
+        style={styles.scroll}
+        contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}
       >
-        {notificationsData.length === 0 ? (
-          <Text className="text-center mt-10 text-gray-500">
-            No notifications
-          </Text>
+        {items.length === 0 ? (
+          <View style={styles.emptyBox}>
+            <Bell size={48} color="#d1d5db" strokeWidth={1.5} />
+            <Text style={styles.emptyText}>No notifications</Text>
+          </View>
         ) : (
-          notificationsData.map((item) => (
+          items.map((item) => (
             <View
               key={item.id}
-              className={`flex-row px-5 py-5 border-b border-gray-50 ${item.isUnread ? "bg-blue-50/30" : "bg-white"}`}
+              style={[styles.row, item.isUnread && styles.rowUnread]}
             >
-              {/* Icon Column */}
-              <View className="mr-4 mt-1 relative">
-                <Bell size={24} color="#4b5563" strokeWidth={1.5} />
-                {item.isUnread && (
-                  <View className="absolute -top-1 -right-1 w-2.5 h-2.5 bg-blue-500 rounded-full border border-white" />
-                )}
+              {/* Icon */}
+              <View style={styles.iconWrap}>
+                <Bell size={22} color="#4b5563" strokeWidth={1.5} />
+                {item.isUnread && <View style={styles.dot} />}
               </View>
 
-              {/* Content Column - Ensure flex-1 so it takes available width */}
-              <View className="flex-1 pr-2">
-                <Text className="text-[15px] text-black leading-5">
-                  <Text className="font-bold">{item.title} </Text>
+              {/* Content */}
+              <View style={styles.content}>
+                <Text style={styles.titleText}>
+                  <Text style={styles.bold}>{item.title} </Text>
                   {item.message}
                 </Text>
 
-                {item.timeLabel && (
-                  <Text className="text-gray-800 mt-1.5 text-sm">
-                    {item.timeLabel}
-                  </Text>
-                )}
+                {item.timeLabel ? (
+                  <Text style={styles.timeLabel}>{item.timeLabel}</Text>
+                ) : null}
 
-                <Text className="text-gray-400 mt-1 text-sm">
-                  {item.timeAgo}
-                </Text>
+                <Text style={styles.timeAgo}>{item.timeAgo}</Text>
               </View>
 
-              {/* Actions Column */}
-              <View className="flex-row items-start gap-4 ml-2 mt-1">
-                {item.isUnread ? (
-                  <TouchableOpacity>
+              {/* Actions */}
+              <View style={styles.rowActions}>
+                <TouchableOpacity
+                  onPress={() => handleToggleRead(item.id)}
+                  hitSlop={8}
+                  style={{ marginRight: 12 }}
+                >
+                  {item.isUnread ? (
                     <CheckCheck size={20} color="#60a5fa" />
-                  </TouchableOpacity>
-                ) : (
-                  <TouchableOpacity>
+                  ) : (
                     <Check size={20} color="#9ca3af" />
-                  </TouchableOpacity>
-                )}
+                  )}
+                </TouchableOpacity>
 
-                <TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => handleDelete(item.id)}
+                  hitSlop={8}
+                >
                   <Trash2 size={20} color="#f87171" />
                 </TouchableOpacity>
               </View>
@@ -138,6 +173,113 @@ export default function NotificationsScreen() {
           ))
         )}
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 }
+
+// ---------- STYLES ----------
+const styles = StyleSheet.create({
+  safe: {
+    flex: 1,
+    backgroundColor: "#ffffff",
+  },
+  header: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingHorizontal: 20,
+    paddingVertical: 14,
+    borderBottomWidth: 1,
+    borderBottomColor: "#f3f4f6",
+  },
+  headerTitle: {
+    fontSize: 22,
+    fontWeight: "700",
+    color: "#000",
+  },
+  headerActions: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  actionBtn: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginRight: 14,
+  },
+  actionText: {
+    marginLeft: 4,
+    fontSize: 12,
+    fontWeight: "600",
+  },
+  scroll: {
+    flex: 1,
+  },
+  scrollContent: {
+    paddingBottom: 24,
+  },
+  emptyBox: {
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 80,
+  },
+  emptyText: {
+    marginTop: 12,
+    color: "#6b7280",
+    fontSize: 14,
+  },
+  row: {
+    flexDirection: "row",
+    paddingHorizontal: 20,
+    paddingVertical: 18,
+    borderBottomWidth: 1,
+    borderBottomColor: "#f3f4f6",
+    backgroundColor: "#ffffff",
+  },
+  rowUnread: {
+    backgroundColor: "#eff6ff",
+  },
+  iconWrap: {
+    marginRight: 12,
+    marginTop: 2,
+    position: "relative",
+  },
+  dot: {
+    position: "absolute",
+    top: -2,
+    right: -2,
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    backgroundColor: "#3b82f6",
+    borderWidth: 1,
+    borderColor: "#ffffff",
+  },
+  content: {
+    flex: 1,
+    paddingRight: 8,
+  },
+  titleText: {
+    fontSize: 15,
+    color: "#000",
+    lineHeight: 20,
+  },
+  bold: {
+    fontWeight: "700",
+  },
+  timeLabel: {
+    marginTop: 6,
+    fontSize: 13,
+    color: "#1f2937",
+  },
+  timeAgo: {
+    marginTop: 4,
+    fontSize: 12,
+    color: "#9ca3af",
+  },
+  rowActions: {
+    flexDirection: "row",
+    alignItems: "flex-start",
+    marginLeft: 8,
+    marginTop: 2,
+  },
+});

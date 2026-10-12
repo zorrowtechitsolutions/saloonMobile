@@ -1,11 +1,11 @@
 import { Check, ChevronRight, Link as LinkIcon } from "lucide-react-native";
 import {
-    Image,
-    SafeAreaView,
-    ScrollView,
-    Text,
-    TouchableOpacity,
-    View,
+  Image,
+  SafeAreaView,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
 import ButtonComponent from "../../../../components/common/Button";
 
@@ -17,7 +17,7 @@ export default function RegisterCompleated() {
           contentContainerStyle={{
             paddingHorizontal: 24,
             paddingTop: 14,
-            paddingBottom: 30,
+            paddingBottom: 100,
           }}
           showsVerticalScrollIndicator={false}
         >
@@ -49,7 +49,7 @@ export default function RegisterCompleated() {
                 </View>
               </View>
 
-              <Text className="ml-3 text-[20px] font-bold text-[#202020]">
+              <Text className="ml-3 text-[15px] font-bold text-[#202020]">
                 Urban Cuts is now live!
               </Text>
 
